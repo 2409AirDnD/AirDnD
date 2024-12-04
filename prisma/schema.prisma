@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  username String
+  password String
+  email String
+  avatar String      //image url, or maybe explore upload functionality
+
+  player_instances Player[]
+  campaigns Campaign[]
+}
+
+model Campaign {
+  id Int @id @default(autoincrement())
+  name String
+  description String
+
+  DM User @relation(fields: [dm_ID], references: [id])
+  dm_ID Int
+
+  players Player[]
+  characters Character[]
+}
+
+model Player {
+  id Int @id @default(autoincrement())
+
+  player User @relation(fields: [player_ID], references: [id])
+  player_ID Int
+
+  campaign Campaign @relation(fields: [campaign_ID], references: [id])
+  campaign_ID Int
+
+  characters Character[]
+}
+
+model Character {
+ id Int @id @default(autoincrement())
+ name String
+ race String
+ class String
+ level Int
+
+ // STATS - Set on the front-end via inputs, using some logic as restraints (ie min/max based on class/race chosen)
+  strength Int
+  dexterity Int
+  constitution Int
+  intelligence Int
+  wisdom Int
+  charisma Int
+
+ //SKILLS - All set to optional (Int?), so that they can be blank. Set on the front-end via inputs, using some logic as restraints (ie min/max based on class/race chosen).
+  athletics Int?
+  acrobatics Int?
+  slight_of_hand Int?
+  stealth Int?
+  arcana Int?
+  history Int?
+  investigation Int?
+  nature Int?
+  religion Int?
+  animal_handling Int?
+  insight Int?
+  medicine Int?
+  perception Int?
+  survival Int?
+  deception Int?
+  intimidation Int?
+  performance Int?
+  persuasion Int?
+
+ hit_points Int
+ armor_class Int
+
+ player Player @relation(fields: [player_ID], references: [id])
+ player_ID Int
+
+ campaign Campaign @relation(fields: [campaign_ID], references: [id])
+ campaign_ID Int
+
+//Spells is a field in character as well as class. In character to track the spells that the player has chosen for their character, and in class to reflect all spells available for that class.
+ spells Spell[]
+
+}
+
+model Class {
+  id Int @id @default(autoincrement())
+  name String
+//Spells is a field in character as well as class. In character to track the spells that the player has chosen for their character, and in class to reflect all spells available for that class.
+  possible_spells Spell[]
+}
+
+model Race {
+  id Int @id @default(autoincrement())
+  name String
+  age String
+  speed Int
+  language_description String
+  languages String
+  alignment String
+  size String
+  size_description String
+
+  traits Trait[]
+}
+
+model Spell {
+  id Int @id @default(autoincrement())
+  
+  classes_with_spell Class @relation(fields: [class_ID], references: [id])
+  class_ID Int
+
+  characters_with_spells Character @relation(fields: [character_ID], references: [id])
+  character_ID Int
+}
+
+model Trait {
+  id Int @id @default(autoincrement())
+  name String
+  description String
+
+  races Race @relation(fields: [race_ID], references: [id])
+  race_ID Int
+}
