@@ -10,7 +10,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  next({ status: 404, message: "That endpoing doesn't exist." });
+  next({ status: 404, message: "That endpoint doesn't exist." });
 });
 
 app.use((err, req, res, next) => {
