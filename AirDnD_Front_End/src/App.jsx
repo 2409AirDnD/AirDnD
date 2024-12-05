@@ -1,6 +1,12 @@
+import CharacterSheet from "./components/CharacterSheet";
+
 function App() {
 
-  return
+  return (
+    <>
+      <CharacterSheet />
+    </>
+  )
 }
 
 export default App
