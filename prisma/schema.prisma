@@ -247,4 +247,4 @@ model StatusEffect {
   character        CharacterSheet @relation("CharacterStatusEffect", fields: [characterId], references: [id])  
   characterId      Int
 }
-
+//Lets Make it 250.
