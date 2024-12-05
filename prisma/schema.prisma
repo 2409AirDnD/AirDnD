@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  username String
+  username String @unique
   password String
   email String
   avatar String      //image url, or maybe explore upload functionality
@@ -27,7 +27,7 @@ model Campaign {
   dm_ID Int
 
   players Player[]
-  characters Character[]
+  characters CharacterSheet[]
 }
 
 model Player {
@@ -35,60 +35,60 @@ model Player {
 
   player User @relation(fields: [player_ID], references: [id])
   player_ID Int
-
+  username String
   campaign Campaign @relation(fields: [campaign_ID], references: [id])
   campaign_ID Int
 
-  characters Character[]
+  characters CharacterSheet[]
 }
 
-model Character {
- id Int @id @default(autoincrement())
- name String
- race String
- class String
- level Int
+model CharacterSheet {
+  id Int @id @default(autoincrement())
+  charactername String
+  experience Int
+  armorclass Int
+  initiative Int
+  speed Int
+  maxhitpoints Int
+  currenthitpoints Int
+  level Int
+  proficiencybonus Int
+  class Class[]
+  race  Race []
+  ability Ability[]
+  spells Spell[]
+  inventory Inventory[]
+  features ClassFeatures[]
+  traits Traits[]
+  actions Actions[]
+  skills Skills[]
 
- // STATS - Set on the front-end via inputs, using some logic as restraints (ie min/max based on class/race chosen)
-  strength Int
-  dexterity Int
-  constitution Int
-  intelligence Int
-  wisdom Int
-  charisma Int
+  player Player @relation(fields: [player_ID], references: [id])
+  player_ID Int
+  campaign Campaign @relation(fields: [campaign_ID], references: [id])
+  campaign_ID Int
+  user  User @relation(fields:[playername], references:[username])
+  playername String
+}
 
- //SKILLS - All set to optional (Int?), so that they can be blank. Set on the front-end via inputs, using some logic as restraints (ie min/max based on class/race chosen).
-  athletics Int?
-  acrobatics Int?
-  slight_of_hand Int?
-  stealth Int?
-  arcana Int?
-  history Int?
-  investigation Int?
-  nature Int?
-  religion Int?
-  animal_handling Int?
-  insight Int?
-  medicine Int?
-  perception Int?
-  survival Int?
-  deception Int?
-  intimidation Int?
-  performance Int?
-  persuasion Int?
+model Ability {
+  index  String @id
+  name String
+  rolledvalue Int
+  modifier Int
+  description String
+}
 
- hit_points Int
- armor_class Int
-
- player Player @relation(fields: [player_ID], references: [id])
- player_ID Int
-
- campaign Campaign @relation(fields: [campaign_ID], references: [id])
- campaign_ID Int
-
-//Spells is a field in character as well as class. In character to track the spells that the player has chosen for their character, and in class to reflect all spells available for that class.
- spells Spell[]
-
+model Skills {
+  name String @id
+  description String
+  proficiency Boolean
+  characterproficiency  CharacterSheet @relation(fields:[proficiencyvalue], references: [proficiencybonus])
+  proficiencyvalue Int
+  abilityvalue Ability @relation(fields:[value], references: [modifier])
+  value Int
+  ability Ability @relation(fields:[abilityused], references:[name])
+  abilityused String
 }
 
 model Class {
