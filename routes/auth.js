@@ -15,6 +15,7 @@ router.use(async (req, res, next) => {
   if (!token) return next();
   try {
     const { id } = jwt.verify(token, JWT_SECRET);
+    //might be broken here
     const user = await prisma.user.findUniqueOrThrow({
       where: { id },
     });
@@ -25,11 +26,27 @@ router.use(async (req, res, next) => {
   }
 });
 router.post("/register", async (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, password, email, avatar } = req.body;
+
   try {
-    const user = await prisma.user.register(username, password);
+    const user = await prisma.user.register(email, username, password, avatar);
+    console.log(user);
     const token = createToken(user.id);
     res.status(201).json({ token });
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post("/login", async (req, res, next) => {
+  const { username, password } = req.body;
+  console.log(username, password);
+  try {
+    const user = await prisma.user.login(username, password);
+    console.log(user);
+    const token = createToken(user.id);
+    console.log(token);
+    res.json({ token });
   } catch (e) {
     next(e);
   }
