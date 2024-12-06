@@ -4,3 +4,42 @@
   color: blanchedalmond;
   font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
+
+header {
+  display: flex;
+  justify-content: center;
+  background-image: url("src/assets/navtexture1.jpg");
+  background-size: cover;
+  height: 25px;
+  padding-top: .5vh;
+  position:relative;
+  z-index: -1;
+}
+
+header::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position:absolute;
+  z-index: 0;
+  background-color: rgb(27, 17, 0);
+  opacity: 50%;
+}
+
+body {
+  margin: 0;
+}
+
+header > a {
+  margin-left: 5vh;
+  margin-right: 5vh;
+  color: blanchedalmond;
+  position:relative;
+  z-index: 1;
+
+}
+
+header > a:visited {
+  color: blanchedalmond
+}
