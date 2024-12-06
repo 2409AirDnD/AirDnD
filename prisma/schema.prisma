@@ -16,6 +16,7 @@ model User {
 
   player_instances Player[]
   campaigns Campaign[]
+  charactersheets CharacterSheet[] @relation("UserCharacterSheets")
 }
 
 model Campaign {
@@ -44,81 +45,100 @@ model Player {
 
 model CharacterSheet {
   id Int @id @default(autoincrement())
-  charactername String
+  characterAvater String
+  characterName String
   experience Int
-  armorclass Int
-  initiative Int
+  armorClass Int
   speed Int
-  maxhitpoints Int
-  currenthitpoints Int
   level Int
-  proficiencybonus Int
-  class Class[]
-  race  Race []
-  ability Ability[]
+  statusEffect StatusEffect[] @relation("CharacterStatusEffect")
+  health Health[] @relation("CharacterHealth")
+  class Class[] @relation("CharacterClass")
+  classFeature ClassFeature[] @relation("CharacterClassFeatures")
+  race  Race [] @relation("CharacterRace")
   spells Spell[]
+  spellslots SpellSlot[]
+  ability Ability[]
+  traits Trait[] @relation("CharacterTraits")
+  skills SkillProficiency[]
   inventory Inventory[]
-  features ClassFeatures[]
-  traits Traits[]
-  actions Actions[]
-  skills Skills[]
+  actions Action[]
 
-  player Player @relation(fields: [player_ID], references: [id])
-  player_ID Int
-  campaign Campaign @relation(fields: [campaign_ID], references: [id])
-  campaign_ID Int
-  user  User @relation(fields:[playername], references:[username])
+  player Player @relation(fields: [playerId], references: [id])
+  playerId Int
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  campaignId Int
+  user  User @relation("UserCharacterSheets",fields:[playername], references:[username])
   playername String
-}
-
-model Ability {
-  index  String @id
-  name String
-  rolledvalue Int
-  modifier Int
-  description String
-}
-
-model Skills {
-  name String @id
-  description String
-  proficiency Boolean
-  characterproficiency  CharacterSheet @relation(fields:[proficiencyvalue], references: [proficiencybonus])
-  proficiencyvalue Int
-  abilityvalue Ability @relation(fields:[value], references: [modifier])
-  value Int
-  ability Ability @relation(fields:[abilityused], references:[name])
-  abilityused String
 }
 
 model Class {
   id Int @id @default(autoincrement())
   name String
-//Spells is a field in character as well as class. In character to track the spells that the player has chosen for their character, and in class to reflect all spells available for that class.
-  possible_spells Spell[]
+  possiblespells Spell[] @relation("ClassSpells")
+  features ClassFeature[]
+  characters CharacterSheet[] @relation("CharacterClass")
+  
+  spellcastingAbility String? 
 }
 
 model Race {
-  id Int @id @default(autoincrement())
-  name String
-  age String
-  speed Int
-  language_description String
-  languages String
-  alignment String
+  index String @id
+  name String 
+  baseSpeed Int  
   size String
-  size_description String
+  traits Trait[] @relation("RaceTraits")
 
-  traits Trait[]
+  charactersheet CharacterSheet[] @relation("CharacterRace")
 }
+model Ability {
+  index  String @id
+  name String
+  rolledValue Int
+  description String
+
+  skillProficiency SkillProficiency[]@relation("AbilitySkill")
+  characterSheet CharacterSheet @relation(fields: [characterid], references: [id])
+  characterid Int
+}
+
+model SkillDefinition {
+  name String @id
+  description String
+  skillProficiency SkillProficiency[] @relation("SkillProficiency")
+}
+
+model SkillProficiency {
+  id Int @id @default(autoincrement())
+  proficiency Boolean
+  character CharacterSheet @relation(fields: [characterId], references: [id])
+  characterId Int
+  skill SkillDefinition @relation("SkillProficiency",fields: [skillName], references: [name])
+  skillName String
+  ability Ability @relation("AbilitySkill", fields: [abilityIndex], references: [index])
+  abilityIndex String
+}
+
 
 model Spell {
   id Int @id @default(autoincrement())
+  name String
+  level Int 
+  castingTime String 
+  range String 
+  duration String 
+  damage String? 
+  damageType String?
+  components String?
+  spellcastingModifier Int?
+
+  description String 
   
-  classes_with_spell Class @relation(fields: [class_ID], references: [id])
+  action Action[]@relation("SpellAction")
+  classesWithSpell Class @relation("ClassSpells",fields: [class_ID], references: [id])
   class_ID Int
 
-  characters_with_spells Character @relation(fields: [character_ID], references: [id])
+  charactersWithSpells CharacterSheet @relation(fields: [character_ID], references: [id])
   character_ID Int
 }
 
@@ -127,6 +147,104 @@ model Trait {
   name String
   description String
 
-  races Race @relation(fields: [race_ID], references: [id])
-  race_ID Int
+  races Race[] @relation("RaceTraits")
+  characters CharacterSheet[] @relation("CharacterTraits")
 }
+
+model SpellSlot {
+  id            Int   @id @default(autoincrement()) 
+  spellLevel    Int  
+  slotsAvailable Int   
+  slotsUsed      Int  
+  SpellcastingAbility String?
+  character     CharacterSheet @relation(fields: [characterId], references: [id])
+  characterId   Int           
+}
+
+model ClassFeature {
+  id          Int       @id @default(autoincrement()) 
+  name        String    
+  description String    
+  level       Int?      
+  
+  class       Class     @relation(fields: [classId], references: [id])
+  classId     Int       
+  
+  characters  CharacterSheet[] @relation("CharacterClassFeatures")
+}
+
+model Inventory {
+  id            Int       @id @default(autoincrement()) 
+  name          String
+  itemType      String    
+  description   String?   
+  quantity      Int          
+  Stackable     Boolean
+  equipped       Boolean @default(false)
+
+  action Action[] @relation("InventoryAction")
+  equipment Equipment[] @relation("EquipmentInventory")
+  character     CharacterSheet @relation(fields: [characterId], references: [id])
+  characterId   Int           
+}
+
+model Equipment {
+  id          Int        @id @default(autoincrement()) 
+  name        String    
+  description String?    
+  type        String        
+  damage      Int?
+  healing    Int?
+  armorClass  Int?       
+  value       Int?       
+  
+  
+  inventories Inventory[] @relation("EquipmentInventory") 
+}
+
+model Action {
+  id             Int       @id @default(autoincrement())
+  name           String    
+  description    String    
+  actionType     String    
+  damage         String?   
+  duration       String?   
+  range          String?   
+  
+  equippedItem   Inventory? @relation("InventoryAction",fields: [equippedItemId], references: [id])
+  equippedItemId Int?
+  spell          Spell?     @relation("SpellAction",fields: [spellId], references: [id])
+  spellId        Int?
+
+  character      CharacterSheet @relation(fields: [characterId], references: [id])
+  characterId    Int
+}
+
+model Health {
+  id                Int          @id @default(autoincrement())
+  currentHP         Int          // Current hit points (this can be reduced by damage or status effects)
+  maxHP             Int          // Maximum hit points
+  tempHP            Int          // Temporary hit points, if applicable (e.g., gained from a spell)
+  deathSaves        Int          
+  
+  statusEffects     StatusEffect[] @relation("HealthStatus") // Link to status effects that affect health
+  
+  character         CharacterSheet @relation("CharacterHealth",fields: [characterId], references: [id])  
+  characterId       Int
+}
+
+model StatusEffect {
+  id               Int          @id @default(autoincrement())
+  name             String       
+  description      String       
+  duration         Int          
+  effectType       String      
+  amount           Int          
+  
+  health           Health        @relation("HealthStatus",fields: [healthId], references: [id])  
+  healthId         Int
+  
+  character        CharacterSheet @relation("CharacterStatusEffect", fields: [characterId], references: [id])  
+  characterId      Int
+}
+
