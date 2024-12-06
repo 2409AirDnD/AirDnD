@@ -32,3 +32,6 @@ function Login({ setToken }) {
     </>
   );
 }
+
+
+export default Login;
