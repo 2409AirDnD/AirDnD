@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/" element= {<LandingPage />} />
       <Route path="/charactersheet" element= {<CharacterSheet />} />
-      <Route path="/register" element= {<Register.jsx />} />
+      <Route path="/register" element= {<Register />} />
     </Routes>
     </>
   )
