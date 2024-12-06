@@ -4,16 +4,16 @@ import LandingPage from "./components/LandingPage";
 import Register from "./components/Register";
 
 function App() {
-
   return (
     <>
-    <Routes>
-      <Route path="/" element= {<LandingPage />} />
-      <Route path="/charactersheet" element= {<CharacterSheet />} />
-      <Route path="/register" element= {<Register />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/charactersheet" element={<CharacterSheet />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
