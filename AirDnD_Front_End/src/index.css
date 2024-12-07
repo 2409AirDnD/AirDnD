@@ -108,3 +108,35 @@ header > a:visited {
   z-index: 1;
   color: rgb(27, 17, 0);
 }
+
+#abilities-block {
+width: 90%;
+height: 150px;
+background-color: transparent;
+border: 2px solid rgb(27, 17, 0);
+border-radius: 12.5%;
+justify-self: center;
+position: relative;
+z-index: 0;
+overflow: hidden;
+}
+
+#abilities-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 229, 189);
+  border-radius: 12.5%;
+  z-index: -1; 
+  opacity: 75%
+}
+
+#abilities-block > * {
+  padding-left: 40%;  /* This padding is for testing purposes only */
+  position: relative; 
+  z-index: 1;
+  color: rgb(27, 17, 0);
+}
