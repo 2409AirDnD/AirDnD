@@ -1,6 +1,5 @@
 :root {
-
-  background-color: #242424;
+  background-color:#242424;
   color: blanchedalmond;
   font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
@@ -10,7 +9,8 @@ header {
   justify-content: center;
   background-image: url("src/assets/navtexture1.jpg");
   background-size: cover;
-  height: 25px;
+  border-bottom: 4px outset rgb(0, 0, 0);
+  height: 30px;
   padding-top: .5vh;
   position:relative;
   z-index: 0;
@@ -29,6 +29,8 @@ header::before {
 
 body {
   margin: 0;
+  height:100vh;
+  width: 100%;
 }
 
 header > a {
@@ -37,9 +39,38 @@ header > a {
   color: blanchedalmond;
   position:relative;
   z-index: 1;
-
+  
 }
 
 header > a:visited {
   color: blanchedalmond
+}
+
+#character-sheet-block {
+  margin-top: 2.5vh;
+  width: 80%;
+  min-height: 100vh;
+  height: fit-content;
+  justify-self: center;
+  border: 2px outset blanchedalmond;
+  background-color: rgb(68, 46, 7);
+  position: relative;
+  z-index: 0;
+}
+
+#character-sheet-block::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+  background-image: url("src/assets/background3.jpg");
+  background-size: cover;
+  opacity: 35%;
+}
+
+#character-sheet-header {
+  margin-top: 2.5vh;
+  justify-self: center
 }
