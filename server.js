@@ -7,6 +7,8 @@ app.use(express.json());
 
 app.use(require("./routes/auth").router);
 
+app.use("/spells", require("./routes/spells"));
+
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
   next();
