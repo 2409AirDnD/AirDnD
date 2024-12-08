@@ -56,6 +56,7 @@ header > a:visited {
   background-color: rgb(68, 46, 7);
   position: relative;
   z-index: 0;
+  color: rgb(27, 17, 0);
 }
 
 #character-sheet-block::before {
@@ -73,4 +74,37 @@ header > a:visited {
 #character-sheet-header {
   margin-top: 2.5vh;
   justify-self: center
+}
+
+#basic-info-block {
+  width: 90%;
+  height: 300px;
+  justify-self: center;
+  background-color: transparent;
+  border: 2px solid rgb(27, 17, 0);
+  border-radius: 12.5%;
+  margin-top: 2vh;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#basic-info-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 229, 189);
+  border-radius: 12.5%;
+  z-index: -1; 
+  opacity: 75%
+}
+
+#basic-info-block > * {
+  padding-left: 40%;  /* This padding is for testing purposes only */
+  position: relative; 
+  z-index: 1;
+  color: rgb(27, 17, 0);
 }
