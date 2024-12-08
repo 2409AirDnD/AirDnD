@@ -1,7 +1,9 @@
 function Skills () {
-  return ( 
-  <h1>Skills</h1>
+  return (
+    <div id="skills-block">
+      <h1>Skills.jsx</h1>
+    </div>
 	)
-};  
+}; 
 
 export default Skills;

@@ -1,7 +1,22 @@
 :root {
   background-color:#242424;
+  background-size: cover;
   color: blanchedalmond;
   font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+  position: relative;
+  z-index: 1;
+}
+
+:root::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+  background-image: url("src/assets/background3.jpg");
+  background-size: cover;
+  opacity: 38%;
 }
 
 header {
@@ -13,7 +28,7 @@ header {
   height: 30px;
   padding-top: .5vh;
   position:relative;
-  z-index: 0;
+  z-index: 2;
 }
 
 header::before {
@@ -22,7 +37,7 @@ header::before {
   height: 100%;
   top: 0;
   position:absolute;
-  z-index: -1;
+  z-index: 1;
   background-color: rgb(27, 17, 0);
   opacity: 50%;
 }
@@ -38,7 +53,7 @@ header > a {
   margin-right: 5vh;
   color: blanchedalmond;
   position:relative;
-  z-index: 1;
+  z-index: 2;
   
 }
 
@@ -49,7 +64,7 @@ header > a:visited {
 #character-sheet-block {
   margin-top: 2.5vh;
   width: 80%;
-  min-height: 100vh;
+  min-height: 100vh; /* This height setting is for testing development purposes only - DELETE */
   height: fit-content;
   justify-self: center;
   border: 2px outset blanchedalmond;
@@ -103,7 +118,7 @@ header > a:visited {
 }
 
 #basic-info-block > * {
-  padding-left: 40%;  /* This padding is for testing purposes only */
+  padding-left: 40%;  /* This padding is for testing purposes only - DELETE */
   position: relative; 
   z-index: 1;
   color: rgb(27, 17, 0);
@@ -135,7 +150,40 @@ overflow: hidden;
 }
 
 #abilities-block > * {
-  padding-left: 40%;  /* This padding is for testing purposes only */
+  padding-left: 40%;  /* This padding is for testing purposes only - DELETE */
+  position: relative; 
+  z-index: 1;
+  color: rgb(27, 17, 0);
+}
+
+#skills-block {
+  margin-left: 4.75%;
+  min-height: 60vh; /* This height setting is for testing development purposes only - DELETE */
+  height: fit-content;
+  width: 400px;
+  background-color: transparent;
+  border: 2px solid rgb(27, 17, 0);
+  border-radius: 12.5%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#skills-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 229, 189);
+  border-radius: 12.5%;
+  z-index: -1; 
+  opacity: 75%
+}
+
+#skills-block > * {
+  padding-left: 30%;  /* This padding is for testing purposes only - DELETE */
   position: relative; 
   z-index: 1;
   color: rgb(27, 17, 0);
