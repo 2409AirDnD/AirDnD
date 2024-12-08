@@ -1,15 +1,15 @@
-import React, {useState} from "react"; 
 import Skills from "./Skills.jsx"
 import BasicInfo from "./BasicInfo.jsx"
-import {useEffect} from "react" 
 
 const CharacterSheet = () => {
   return (
     <>
+    <h1 id="character-sheet-header">Create your character</h1>
+    <div id="character-sheet-block">
     <BasicInfo/>
     <Skills/>
+    </div>
     </>
-  
   )
 }
 
