@@ -7,11 +7,11 @@ app.use(express.json());
 
 app.use(require("./routes/auth").router);
 
-app.use("/spells", require("./routes/spells"));
+app.use("/spells", require("./api/spells"));
 
-app.use("/users", require("./routes/users"));
+app.use("/users", require("./api/users"));
 
-app.use("/campaigns", require("./routes/campaigns"))
+app.use("/campaigns", require("./api/campaigns"))
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
