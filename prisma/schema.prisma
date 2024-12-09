@@ -35,10 +35,10 @@ model Player {
   id Int @id @default(autoincrement())
 
   player User @relation(fields: [player_ID], references: [id])
-  player_ID Int
+  playerId Int
   username String
   campaign Campaign @relation(fields: [campaign_ID], references: [id])
-  campaign_ID Int
+  campaignId Int
 
   characters CharacterSheet[]
 }
@@ -69,13 +69,13 @@ model CharacterSheet {
   campaign Campaign @relation(fields: [campaignId], references: [id])
   campaignId Int
   user  User @relation("UserCharacterSheets",fields:[playername], references:[username])
-  playername String
+  playerName String
 }
 
 model Class {
   id Int @id @default(autoincrement())
   name String
-  possiblespells Spell[] @relation("ClassSpells")
+  possibleSpells Spell[] @relation("ClassSpells")
   features ClassFeature[]
   characters CharacterSheet[] @relation("CharacterClass")
   
@@ -98,13 +98,15 @@ model Ability {
   description String
 
   skillProficiency SkillProficiency[]@relation("AbilitySkill")
-  characterSheet CharacterSheet @relation(fields: [characterid], references: [id])
-  characterid Int
+  characterSheet CharacterSheet @relation(fields: [characterId], references: [id])
+  characterId Int
 }
 
 model SkillDefinition {
-  name String @id
-  description String
+  name            String  @id
+  description     String
+  relatedAbility  Ability @relation(fields: [abilityIndex], references: [index])
+  abilityIndex    String  
   skillProficiency SkillProficiency[] @relation("SkillProficiency")
 }
 
@@ -136,10 +138,10 @@ model Spell {
   
   action Action[]@relation("SpellAction")
   classesWithSpell Class @relation("ClassSpells",fields: [class_ID], references: [id])
-  class_ID Int
+  classId Int
 
   charactersWithSpells CharacterSheet @relation(fields: [character_ID], references: [id])
-  character_ID Int
+  characterId Int
 }
 
 model Trait {
@@ -156,7 +158,7 @@ model SpellSlot {
   spellLevel    Int  
   slotsAvailable Int   
   slotsUsed      Int  
-  SpellcastingAbility String?
+  spellcastingAbility String?
   character     CharacterSheet @relation(fields: [characterId], references: [id])
   characterId   Int           
 }
@@ -222,12 +224,10 @@ model Action {
 
 model Health {
   id                Int          @id @default(autoincrement())
-  currentHP         Int          // Current hit points (this can be reduced by damage or status effects)
-  maxHP             Int          // Maximum hit points
-  tempHP            Int          // Temporary hit points, if applicable (e.g., gained from a spell)
-  deathSaves        Int          
+  currentHP         Int          
+  maxHP             Int                
   
-  statusEffects     StatusEffect[] @relation("HealthStatus") // Link to status effects that affect health
+  statusEffects     StatusEffect[] @relation("HealthStatus") 
   
   character         CharacterSheet @relation("CharacterHealth",fields: [characterId], references: [id])  
   characterId       Int
