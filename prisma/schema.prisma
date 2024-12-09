@@ -34,10 +34,10 @@ model Campaign {
 model Player {
   id Int @id @default(autoincrement())
 
-  player User @relation(fields: [player_ID], references: [id])
+  player User @relation(fields: [playerId], references: [id])
   playerId Int
   username String
-  campaign Campaign @relation(fields: [campaign_ID], references: [id])
+  campaign Campaign @relation(fields: [campaignId], references: [id])
   campaignId Int
 
   characters CharacterSheet[]
@@ -51,14 +51,13 @@ model CharacterSheet {
   armorClass Int
   speed Int
   level Int
-  statusEffect StatusEffect[] @relation("CharacterStatusEffect")
   health Health[] @relation("CharacterHealth")
   class Class[] @relation("CharacterClass")
   classFeature ClassFeature[] @relation("CharacterClassFeatures")
   race  Race [] @relation("CharacterRace")
   spells Spell[]
   spellslots SpellSlot[]
-  ability Ability[]
+  ability Ability[] @relation("characterAbility")
   traits Trait[] @relation("CharacterTraits")
   skills SkillProficiency[]
   inventory Inventory[]
@@ -68,14 +67,14 @@ model CharacterSheet {
   playerId Int
   campaign Campaign @relation(fields: [campaignId], references: [id])
   campaignId Int
-  user  User @relation("UserCharacterSheets",fields:[playername], references:[username])
+  user  User @relation("UserCharacterSheets",fields:[playerName], references:[username])
   playerName String
 }
 
 model Class {
   id Int @id @default(autoincrement())
-  name String
-  possibleSpells Spell[] @relation("ClassSpells")
+  name String @unique
+  possibleSpells Spell[]
   features ClassFeature[]
   characters CharacterSheet[] @relation("CharacterClass")
   
@@ -96,17 +95,15 @@ model Ability {
   name String
   rolledValue Int
   description String
-
+  
+  characterSheet CharacterSheet[] @relation("characterAbility")
   skillProficiency SkillProficiency[]@relation("AbilitySkill")
-  characterSheet CharacterSheet @relation(fields: [characterId], references: [id])
-  characterId Int
+ 
 }
 
 model SkillDefinition {
-  name            String  @id
-  description     String
-  relatedAbility  Ability @relation(fields: [abilityIndex], references: [index])
-  abilityIndex    String  
+  name String @id
+  description String
   skillProficiency SkillProficiency[] @relation("SkillProficiency")
 }
 
@@ -129,7 +126,7 @@ model Spell {
   castingTime String 
   range String 
   duration String 
-  damage String? 
+  damage Json?  //changed to allow spell level damage
   damageType String?
   components String?
   spellcastingModifier Int?
@@ -137,11 +134,11 @@ model Spell {
   description String 
   
   action Action[]@relation("SpellAction")
-  classesWithSpell Class @relation("ClassSpells",fields: [class_ID], references: [id])
-  classId Int
 
-  charactersWithSpells CharacterSheet @relation(fields: [character_ID], references: [id])
-  characterId Int
+  charactersWithSpells CharacterSheet? @relation(fields: [characterId], references: [id])
+  characterId Int?
+
+  Class Class[]
 }
 
 model Trait {
@@ -195,7 +192,7 @@ model Equipment {
   name        String    
   description String?    
   type        String        
-  damage      Int?
+  damage      String?
   healing    Int?
   armorClass  Int?       
   value       Int?       
@@ -225,26 +222,10 @@ model Action {
 model Health {
   id                Int          @id @default(autoincrement())
   currentHP         Int          
-  maxHP             Int                
-  
-  statusEffects     StatusEffect[] @relation("HealthStatus") 
+  maxHP             Int          
+  tempHP            Int          
   
   character         CharacterSheet @relation("CharacterHealth",fields: [characterId], references: [id])  
   characterId       Int
 }
 
-model StatusEffect {
-  id               Int          @id @default(autoincrement())
-  name             String       
-  description      String       
-  duration         Int          
-  effectType       String      
-  amount           Int          
-  
-  health           Health        @relation("HealthStatus",fields: [healthId], references: [id])  
-  healthId         Int
-  
-  character        CharacterSheet @relation("CharacterStatusEffect", fields: [characterId], references: [id])  
-  characterId      Int
-}
-//Lets Make it 250.
