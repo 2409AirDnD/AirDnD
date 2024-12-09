@@ -7,6 +7,7 @@ import DeathSavesAndExhaustion from "./DeathSavesAndExhaustion.jsx";
 import Actions from "./Actions.jsx";
 import Traits from "./Traits.jsx";
 import Inventory from "./Inventory.jsx";
+import FeaturesAndProficiencies from "./FeaturesAndProficiencies.jsx";
 const CharacterSheet = () => {
   return (
     <>
@@ -21,6 +22,7 @@ const CharacterSheet = () => {
         <Actions />
         <Traits />
         <Inventory />
+        <FeaturesAndProficiencies />
       </div>
     </>
   );
