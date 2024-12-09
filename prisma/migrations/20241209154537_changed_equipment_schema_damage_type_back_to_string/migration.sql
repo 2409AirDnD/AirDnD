@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Action" ALTER COLUMN "damage" SET DATA TYPE TEXT;
