@@ -287,3 +287,60 @@ header > a:visited {
   width: 60px;
   justify-self: center;
 }
+
+#login-header {
+  text-align: center;
+}
+
+#login-form {
+  width: 90%;
+  height: 900px;
+  justify-self: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border: 2px solid rgb(27, 17, 0);
+  border-radius: 12.5%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#login-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 229, 189);
+  border-radius: 12.5%;
+  z-index: -1;
+  opacity: 75%;
+}
+
+#login-form > * {
+  /* padding-left: 40%;  This padding is for testing purposes only - DELETE */
+  position: relative;
+  z-index: 1;
+  color: rgb(27, 17, 0);
+}
+
+#login-inputs {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+#login-form > button {
+  margin-top: 1%;
+  width: 60px;
+  justify-self: center;
+}
+
+#login-thank-you {
+  margin-top: 25%;
+  font-size: 28px;
+}
