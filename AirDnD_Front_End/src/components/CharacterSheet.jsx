@@ -4,6 +4,7 @@ import Abilities from "./Abilities.jsx";
 import HitpointsAndDice from "./HitpointsAndDice.jsx";
 import InitSpeedAC from "./InitSpeedAC.jsx";
 import DeathSavesAndExhaustion from "./DeathSavesAndExhaustion.jsx";
+import Actions from "./Actions.jsx";
 const CharacterSheet = () => {
   return (
     <>
@@ -15,6 +16,7 @@ const CharacterSheet = () => {
         <HitpointsAndDice />
         <InitSpeedAC />
         <DeathSavesAndExhaustion />
+        <Actions />
       </div>
     </>
   );
