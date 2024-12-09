@@ -29,8 +29,9 @@ const Register = () => {
 
   return (
     <>
-      <h2>Register</h2>
-      <form onSubmit={register}>
+      <h2 id="register-header">Register</h2>
+      <form id="register-form" onSubmit={register}>
+        <div id="register-inputs">
         <label>
           Username:
           <input
@@ -70,6 +71,7 @@ const Register = () => {
           placeholder="Enter image URL."
           required
         />
+        </div>
         <button type="submit">Register</button>
       </form>
     </>
