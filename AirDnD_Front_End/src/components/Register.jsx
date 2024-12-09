@@ -1,51 +1,79 @@
 import { useState } from "react";
+
 const Register = () => {
-  //  const [email, setEmail] = useState('')
-  //const [password, setPassword] = useState('')
-  //const [avatar, setAvatar] = useState('')
-  //const [username, setUsername] = useState('')
-  //const [token, setToken] = useState('')
-  //const handleSubmit = async (event) => {
-  //event.preventDefault()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [username, setUsername] = useState('')
+  const [token, setToken] = useState('')
+
+  const register = async (event) => {
+  event.preventDefault()
+
+  const postCreds = await fetch("http://localhost:3000/register", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      email: email,
+      avatar: avatar
+    }),
+  })
+
+  const responseJSON = await postCreds.json();
+  const token = responseJSON.token;
+  setToken(token);
+}
+
   return (
     <>
       <h2>Register</h2>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <form onSubmit={register}>
         <label>
           Username:
           <input
+            value={ username }
             onChange={(event) => setUsername(event.target.value)}
             type="text"
             username="username"
+            required
           />
         </label>
         <label>
           Email:
           <input
+            value= { email }
             onChange={(event) => setEmail(event.target.value)}
             type="email"
             name="email"
+            required
           />
         </label>
         <label>
           Password:
           <input
+            value= { password }
             onChange={(event) => setPassword(event.target.value)}
             type="password"
             name="password"
+            required
           />
         </label>
         <label>Avatar:</label>
         <input
+          value= { avatar }
           onChange={(event) => setAvatar(event.target.value)}
           type="text"
           name="upload avatarURL"
+          placeholder="Enter image URL."
+          required
         />
-        <input type="submit" value="Submit" />
+        <button type="submit">Register</button>
       </form>
     </>
-  );
-};
-//}
+    );
+  };
 
 export default Register;
