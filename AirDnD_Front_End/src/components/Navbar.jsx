@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ( { loginToken } ) => {
   return (
     <header>
       <Link to={"/"}>Home</Link>
-      <Link to={"/login"}>Login</Link>
-      <Link to={"/register"}>Register</Link>
-      <Link to={"/charactersheet"}>Get Started!</Link>
+      { loginToken ? null : <Link to={"/login"}>Login</Link> }
+      { loginToken ? null : <Link to={"/register"}>Register</Link> }
+      { loginToken ? <Link to={"/account"}>My Account</Link> : null }
+      { loginToken ? <Link to={"/charactersheet"}>Character Sheet Generator</Link>
+        : <Link to={"/charactersheet"}>Get Started!</Link> }
     </header>
   )
 }
