@@ -138,6 +138,7 @@ header > a:visited {
 #abilities-block {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 90%;
   height: 200px;
   background-color: transparent;
@@ -174,9 +175,8 @@ header > a:visited {
 .single-ability-section {
   width: 12%;
   height: 60%;
-  float: left;
   display: flex;
-  margin-left:auto;
+  margin-left: 3.8%;
   margin-right: auto;
   padding-top: 1%;
   justify-content: center;
@@ -184,6 +184,7 @@ header > a:visited {
   border-radius: 50%;
   position: relative;
   z-index: 1;
+  
 }
 
 .single-ability-section::before {
@@ -216,6 +217,19 @@ header > a:visited {
   right: 9%;
   position: absolute;
   z-index: 2;
+}
+
+.ability-roll > * {
+  justify-self: center;
+  font-weight: 800;
+}
+
+#ability-roll-button {
+  align-self: center;
+  top: 42%;
+  right: 48.4%;
+  border: 2px outset rgb(27, 17, 0);
+  cursor: pointer;
 }
 
 #skills-block {
