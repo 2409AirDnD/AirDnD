@@ -4,6 +4,7 @@ import CharacterSheet from "./components/CharacterSheet";
 import LandingPage from "./components/LandingPage";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Account from "./components/Account";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/charactersheet" element={<CharacterSheet />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </>
   );
