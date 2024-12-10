@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors")
+//const cors = require("cors");
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-app.use(cors({ origin: "http://localhost:5173" }));
+//app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use(require("./api/auth").router);
 
@@ -14,8 +14,9 @@ app.use("/spells", require("./api/spells"));
 
 app.use("/users", require("./api/users"));
 
-app.use("/campaigns", require("./api/campaigns"))
+app.use("/campaigns", require("./api/campaigns"));
 
+app.use("/characters", require("./api/characters"));
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
   next();

@@ -45,7 +45,7 @@ model Player {
 
 model CharacterSheet {
   id Int @id @default(autoincrement())
-  characterAvater String
+  characterAvatar String
   characterName String
   experience Int
   armorClass Int
@@ -57,16 +57,16 @@ model CharacterSheet {
   race  Race [] @relation("CharacterRace")
   spells Spell[]
   spellslots SpellSlot[]
-  ability Ability[] @relation("characterAbility")
+  ability Ability[]
   traits Trait[] @relation("CharacterTraits")
   skills SkillProficiency[]
   inventory Inventory[]
   actions Action[]
 
-  player Player @relation(fields: [playerId], references: [id])
-  playerId Int
-  campaign Campaign @relation(fields: [campaignId], references: [id])
-  campaignId Int
+  player Player? @relation(fields: [playerId], references: [id])
+  playerId Int?
+  campaign Campaign? @relation(fields: [campaignId], references: [id])
+  campaignId Int?
   user  User @relation("UserCharacterSheets",fields:[playerName], references:[username])
   playerName String
 }
@@ -91,20 +91,19 @@ model Race {
   charactersheet CharacterSheet[] @relation("CharacterRace")
 }
 model Ability {
-  index  String @id
+  id Int @id @default(autoincrement())
   name String
   rolledValue Int
   description String
   
-  characterSheet CharacterSheet[] @relation("characterAbility")
-  skillProficiency SkillProficiency[]@relation("AbilitySkill")
- 
+  character CharacterSheet? @relation(fields: [characterId], references: [id])
+  characterId Int?
+  @@unique([name, characterId])
 }
 
 model SkillDefinition {
   name String @id
   description String
-  skillProficiency SkillProficiency[] @relation("SkillProficiency")
 }
 
 model SkillProficiency {
@@ -112,10 +111,8 @@ model SkillProficiency {
   proficiency Boolean
   character CharacterSheet @relation(fields: [characterId], references: [id])
   characterId Int
-  skill SkillDefinition @relation("SkillProficiency",fields: [skillName], references: [name])
   skillName String
-  ability Ability @relation("AbilitySkill", fields: [abilityIndex], references: [index])
-  abilityIndex String
+  
 }
 
 
