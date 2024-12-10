@@ -10,6 +10,10 @@ app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use(require("./api/auth").router);
 
+app.use("/classes", require("./api/classes"));
+
+app.use("/races", require("./api/races"));
+
 app.use("/spells", require("./api/spells"));
 
 app.use("/users", require("./api/users"));

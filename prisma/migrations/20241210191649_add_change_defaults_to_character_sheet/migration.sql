@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "CharacterSheet" ALTER COLUMN "experience" SET DEFAULT 0,
+ALTER COLUMN "armorClass" SET DEFAULT 10,
+ALTER COLUMN "speed" SET DEFAULT 30,
+ALTER COLUMN "level" SET DEFAULT 1;

@@ -46,11 +46,11 @@ model Player {
 model CharacterSheet {
   id Int @id @default(autoincrement())
   characterAvatar String
-  characterName String
-  experience Int
-  armorClass Int
-  speed Int
-  level Int
+  characterName String 
+  experience Int @default(0)
+  armorClass Int @default(10)
+  speed Int @default(30)
+  level Int @default(1)
   health Health[] @relation("CharacterHealth")
   class Class[] @relation("CharacterClass")
   classFeature ClassFeature[] @relation("CharacterClassFeatures")
