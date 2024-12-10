@@ -275,6 +275,14 @@ header > a:visited {
   color: rgb(27, 17, 0);
 }
 
+#register-form a {
+  color: rgb(27, 17, 0);
+}
+
+#register-form a:visited {
+  color: rgb(27, 17, 0);
+}
+
 #register-inputs {
   margin-top: 10%;
   display: flex;
@@ -286,6 +294,11 @@ header > a:visited {
   margin-top: 1%;
   width: 60px;
   justify-self: center;
+}
+
+#register-thank-you {
+  margin-top: 25%;
+  font-size: 28px;
 }
 
 #login-header {
