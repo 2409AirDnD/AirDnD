@@ -5,7 +5,6 @@ const Account = () => {
       <div id="account-block">
         <h1>Test Header (REMOVE)</h1>
       </div>
-      <h2></h2>
     </>
   );
 };
