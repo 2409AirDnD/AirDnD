@@ -4,7 +4,7 @@ const LandingPage = () => {
     <h1 id="home-header"> Air DnD</h1>
     <div id="home-block">
     <h1 id="home-h1">Welcome to Air DnD</h1>
-    <h4 className="home-h4">A lightweight Dungeons a Dragons character and campaign generator and manager.</h4>
+    <h4 className="home-h4">A lightweight Dungeons & Dragons character and campaign generator and manager.</h4>
     <h3 id="home-h3">What's New:</h3>
     <h4 className="home-h4">Version 0.7 (Alpha Release) is now live!</h4>
     <ul>
