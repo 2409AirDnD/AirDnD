@@ -52,7 +52,6 @@ async function main() {
     const details = await fetchData(`/ability-scores/${ability.index}`);
     await prisma.ability.create({
       data: {
-        index: ability.index,
         name: details.full_name,
         description: details.desc.join(" "),
         rolledValue: 10, //default value

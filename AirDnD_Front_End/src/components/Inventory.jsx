@@ -1,6 +1,6 @@
 function Inventory() {
   return (
-    <div id="Inventory">
+    <div id="inventory-block">
       <h1>Inventory.jsx</h1>
     </div>
   );
