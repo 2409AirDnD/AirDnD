@@ -1,7 +1,7 @@
 const Account = () => {
   return (
     <>
-      <h1 id="account-header">Welcome back, adventurer!</h1>
+      <h1 id="account-header">Welcome, adventurer!</h1>
       <div id="account-block">
         <h1>Test Header (REMOVE)</h1>
       </div>

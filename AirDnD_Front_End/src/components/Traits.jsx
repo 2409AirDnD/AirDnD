@@ -1,6 +1,6 @@
 function Traits() {
   return (
-    <div id="Traits-block">
+    <div id="traits-block">
       <h1>Traits.jsx</h1>
     </div>
   );

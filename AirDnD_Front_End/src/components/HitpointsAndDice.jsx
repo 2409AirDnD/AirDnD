@@ -1,6 +1,6 @@
 function HitpointsAndDice() {
   return (
-    <div id="Hitpoints-and-dice-block">
+    <div id="hitpoints-and-dice-block">
       <h1>HitpointsAndDice.jsx</h1>
     </div>
   );
