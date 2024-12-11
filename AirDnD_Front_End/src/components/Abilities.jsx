@@ -17,12 +17,12 @@ const Abilities = () => {
   
   const rollAll = () => {
     setRolls({
-      strength: roll(6, 15),
-      dexterity: roll(6, 15),
-      constitution: roll(6, 15),
-      intelligence: roll(6, 15),
-      wisdom: roll(6, 15),
-      charisma: roll(6, 15),
+      strength: roll(6, 18),
+      dexterity: roll(6, 18),
+      constitution: roll(6, 18),
+      intelligence: roll(6, 18),
+      wisdom: roll(6, 18),
+      charisma: roll(6, 18),
     })
   }
 
