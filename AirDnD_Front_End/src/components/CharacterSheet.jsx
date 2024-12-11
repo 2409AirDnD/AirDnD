@@ -22,7 +22,7 @@ const CharacterSheet = () => {
         <Abilities />
         <Skills />
         <InitSpeedAC />
-        <HitpointsAndDice />
+        <HitpointsAndDice selectedClass= { selectedClass } />
         <FeaturesAndProficiencies />
         <Actions />
         <DeathSavesAndExhaustion />
