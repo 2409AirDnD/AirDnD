@@ -3,6 +3,7 @@ const LandingPage = () => {
     <>
     <h1 id="home-header"> Air DnD</h1>
     <div id="home-block">
+    <img src = "src/assets/AirDnD.png" alt = "AirDnD logo" style={{height:'200px', width:'200px', margin:'60px'}}/>
     <h1 id="home-h1">Welcome to Air DnD</h1>
     <h4 className="home-h4">A lightweight Dungeons a Dragons character and campaign generator and manager.</h4>
     <h3 id="home-h3">What's New:</h3>
