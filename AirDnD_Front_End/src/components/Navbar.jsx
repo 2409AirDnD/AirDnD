@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-const Navbar = ({ loginToken }) => {
+const Navbar = ({ loginToken, setLoginToken }) => {
   const navigate = useNavigate();
   const Logout = async () => {
-    localStorage.removeItem("token");
+    setLoginToken("");
     navigate("/");
   };
   return (
@@ -18,12 +18,8 @@ const Navbar = ({ loginToken }) => {
         ) : (
           <Link to={"/charactersheet"}>Get Started!</Link>
         )}
+        {loginToken ? <button onClick={() => Logout()}>Logout</button> : null}
       </header>
-      <div id>
-        {" "}
-        = "logout-block"
-        <button onClick={() => Logout()}>Logout</button>
-      </div>
     </>
   );
 };
