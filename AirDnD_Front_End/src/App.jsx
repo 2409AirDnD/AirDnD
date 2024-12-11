@@ -8,17 +8,20 @@ import Login from "./components/Login";
 import Account from "./components/Account";
 
 function App() {
-
   const [loginToken, setLoginToken] = useState("");
 
   return (
     <>
-    <Navbar loginToken={ loginToken }/>
+      <Navbar loginToken={loginToken} setLoginToken={setLoginToken} />
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/charactersheet" element={<CharacterSheet />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login setLoginToken={ setLoginToken }/>} />
+        <Route
+          path="/login"
+          element={<Login setLoginToken={setLoginToken} />}
+        />
         <Route path="/account" element={<Account />} />
       </Routes>
     </>

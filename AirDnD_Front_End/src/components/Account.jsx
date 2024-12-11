@@ -6,7 +6,7 @@ const Account = () => {
         <h1>Test Header (REMOVE)</h1>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;
