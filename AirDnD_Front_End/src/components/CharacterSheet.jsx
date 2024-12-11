@@ -16,13 +16,13 @@ const CharacterSheet = () => {
         <BasicInfo />
         <Abilities />
         <Skills />
-        <HitpointsAndDice />
         <InitSpeedAC />
-        <DeathSavesAndExhaustion />
-        <Actions />
-        <Traits />
-        <Inventory />
+        <HitpointsAndDice />
         <FeaturesAndProficiencies />
+        <Actions />
+        <DeathSavesAndExhaustion />
+        <Inventory />
+        <Traits />
       </div>
     </>
   );
