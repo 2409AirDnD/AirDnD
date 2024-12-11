@@ -11,8 +11,6 @@ const BasicInfo = () => {
   const [experience, setExperience] = useState(0);
   const [level, setLevel] = useState(1);
   const [image, setImage] = useState(null);
-
-  // State for ability scores (keeping it even if not used in UI)
   const [abilityScores, setAbilityScores] = useState({
     str: 10,
     dex: 10,
