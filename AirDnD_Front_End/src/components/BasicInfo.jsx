@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 
-const BasicInfo = () => {
+const BasicInfo = ( { selectedClass, selectedRace, setSelectedClass, setSelectedRace } ) => {
   // State for form fields
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
-  const [selectedClass, setSelectedClass] = useState("");
-  const [selectedRace, setSelectedRace] = useState("");
   const [experience, setExperience] = useState(0);
   const [level, setLevel] = useState(1);
   const [image, setImage] = useState(null);
