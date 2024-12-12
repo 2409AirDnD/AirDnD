@@ -15,20 +15,20 @@ const CharacterSheet = () => {
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
   const [rolls, setRolls] = useState({
-    strength: 0,
-    dexterity: 0,
-    constitution: 0,
-    intelligence: 0,
-    wisdom: 0,
-    charisma: 0,
+    str: 0,
+    dex: 0,
+    con: 0,
+    int: 0,
+    wis: 0,
+    cha: 0,
   });
   const [abilityModifiers, setAbilityModifiers] = useState({
-    strength: 0,
-    dexterity: 0,
-    constitution: 0,
-    intelligence: 0,
-    wisdom: 0,
-    charisma: 0,
+    str: 0,
+    dex: 0,
+    con: 0,
+    int: 0,
+    wis: 0,
+    cha: 0,
   });
 
   useEffect(() => {
