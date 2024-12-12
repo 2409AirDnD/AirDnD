@@ -1,10 +1,5 @@
 const express = require("express");
 const prisma = require("../prisma");
-const {
-  calculateSkillModifier,
-  calculateAbilityModifier,
-} = require("./skillProficiency");
-
 const router = express.Router();
 module.exports = router;
 
@@ -30,11 +25,8 @@ router.get("/:id/skills", async (req, res) => {
       return acc;
     }, {});
 
-    const proficiencyBonus = Math.floor((character.level - 1) / 4) + 2; // Example formula
-
     const skillsWithModifiers = character.skills.map((skill) => ({
       skillName: skill.skillName,
-      modifier: calculateSkillModifier(skill, abilityScores, proficiencyBonus),
     }));
 
     res.json(skillsWithModifiers);

@@ -21,6 +21,8 @@ app.use("/users", require("./api/users"));
 app.use("/campaigns", require("./api/campaigns"));
 
 app.use("/characters", require("./api/characters"));
+
+app.use("/skills", require("./api/skills"));
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
   next();
