@@ -216,7 +216,7 @@ header > a:visited {
 }
 
 .ability-name {
-  font-size: 60%;
+  font-size: 80%;
 }
 
 .ability-roll {
@@ -243,6 +243,13 @@ header > a:visited {
   right: 48.4%;
   border: 2px outset rgb(27, 17, 0);
   cursor: pointer;
+}
+
+.ability-modifier {
+  position: absolute;
+  top: 20%;
+  left: 28%;
+  font-size: 170%;
 }
 
 #skills-block {
