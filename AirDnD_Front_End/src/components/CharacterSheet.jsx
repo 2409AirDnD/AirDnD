@@ -9,8 +9,8 @@ import Actions from "./Actions.jsx";
 import Traits from "./Traits.jsx";
 import Inventory from "./Inventory.jsx";
 import FeaturesAndProficiencies from "./FeaturesAndProficiencies.jsx";
-import ProficiencyBonus from "./ProficiencyBonus.jsx";
 const CharacterSheet = () => {
+  const [proficiencyBonus, setProficiencyBonus] = useState("+2");
   const [selectedClass, setSelectedClass] = useState("");
   const [selectedRace, setSelectedRace] = useState("");
   const [classList, setClassList] = useState([]);
@@ -55,6 +55,7 @@ const CharacterSheet = () => {
       <h1 id="character-sheet-header">Create your character</h1>
       <div id="character-sheet-block">
         <BasicInfo
+          setProficiencyBonus={setProficiencyBonus}
           setSelectedClass={setSelectedClass}
           setSelectedRace={setSelectedRace}
           selectedClass={selectedClass}
@@ -69,10 +70,9 @@ const CharacterSheet = () => {
           setAbilityModifiers={setAbilityModifiers}
         />
         <Skills
-          setAbilityModifiers={setAbilityModifiers}
+          proficiencyBonus={proficiencyBonus}
           abilityModifiers={abilityModifiers}
         />
-        <ProficiencyBonus />
         <InitSpeedAC abilityModifiers={abilityModifiers} />
         <HitpointsAndDice
           selectedClass={selectedClass}

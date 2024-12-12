@@ -3,6 +3,7 @@ import { useState } from "react";
 const BasicInfo = ({
   selectedClass,
   selectedRace,
+  setProficiencyBonus,
   setSelectedClass,
   setSelectedRace,
   classList,
@@ -30,6 +31,21 @@ const BasicInfo = ({
     };
     console.log(characterData); // Send this data to your backend to save it
   };
+
+  const calculateProficiency = (level) => {
+    if (level <= 4) {
+      setProficiencyBonus(+2);
+    } else if (level <= 8) {
+      setProficiencyBonus(+3);
+    } else if (level <= 12) {
+      setProficiencyBonus(+4);
+    } else if (level <= 16) {
+      setProficiencyBonus(+5);
+    } else if (level <= 20) {
+      setProficiencyBonus(+6);
+    }
+  };
+  calculateProficiency(level);
 
   return (
     <div id="basic-info-block">
