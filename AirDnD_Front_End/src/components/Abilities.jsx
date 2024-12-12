@@ -43,7 +43,7 @@ const Abilities = ( { setRolls, rolls, setAbilityModifiers }) => {
 
       <div className="single-ability-section">
         <p className="ability-name">Stength</p>
-        { rolls.strength ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.str))}</h2> : null }
+        { rolls.str ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.str))}</h2> : null }
         <section className="ability-roll">
           <p id="strength-roll">{rolls.str}</p>
         </section>
@@ -51,7 +51,7 @@ const Abilities = ( { setRolls, rolls, setAbilityModifiers }) => {
 
       <div className="single-ability-section">
         <p className="ability-name">Dexterity</p>
-        { rolls.dexterity ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.dex))}</h2> : null }
+        { rolls.dex ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.dex))}</h2> : null }
         <section className="ability-roll">
           <p id="dexterity-roll">{rolls.dex}</p>
         </section>
@@ -59,7 +59,7 @@ const Abilities = ( { setRolls, rolls, setAbilityModifiers }) => {
 
       <div className="single-ability-section">
         <p className="ability-name">Constitution</p>
-        { rolls.constitution ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.con))}</h2> : null }
+        { rolls.con ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.con))}</h2> : null }
         <section className="ability-roll">
         <p id="constitution-roll">{rolls.con}</p>
         </section>
@@ -67,7 +67,7 @@ const Abilities = ( { setRolls, rolls, setAbilityModifiers }) => {
 
       <div className="single-ability-section">
         <p className="ability-name">Intellegence</p>
-        { rolls.intelligence ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.int))}</h2> : null }
+        { rolls.int ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.int))}</h2> : null }
         <section className="ability-roll">
           <p id="intellegence-roll">{rolls.int}</p>
         </section>
@@ -75,7 +75,7 @@ const Abilities = ( { setRolls, rolls, setAbilityModifiers }) => {
 
       <div className="single-ability-section">
         <p className="ability-name">Wisdom</p>
-        { rolls.wisdom ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.wis))}</h2> : null }
+        { rolls.wis ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.wis))}</h2> : null }
         <section className="ability-roll">
         <p id="wisdom-roll">{rolls.wis}</p> 
         </section>
@@ -83,7 +83,7 @@ const Abilities = ( { setRolls, rolls, setAbilityModifiers }) => {
 
       <div className="single-ability-section">
         <p className="ability-name">Charisma</p>
-        { rolls.charisma ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.charisma))}</h2> : null }
+        { rolls.cha ? <h2 className="ability-modifier">{addPlus(calculateAbilityModifier(rolls.cha))}</h2> : null }
         <section className="ability-roll">
         <p id="charisma-roll">{rolls.cha}</p>
         </section>
