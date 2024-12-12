@@ -67,6 +67,7 @@ async function main() {
       data: {
         name: skill.name,
         description: details.desc.join(" "),
+        ability: details.ability_score.index,
       },
     });
   }

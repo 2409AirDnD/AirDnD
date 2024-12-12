@@ -104,6 +104,7 @@ model Ability {
 model SkillDefinition {
   name String @id
   description String
+  ability String
 }
 
 model SkillProficiency {
