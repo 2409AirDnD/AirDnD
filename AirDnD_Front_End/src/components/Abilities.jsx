@@ -1,15 +1,6 @@
 import { useState } from "react";
 
-const Abilities = () => {
-
-  const [rolls, setRolls] = useState({
-    strength: 0,
-    dexterity: 0,
-    constitution: 0,
-    intelligence: 0,
-    wisdom: 0,
-    charisma: 0,
-  })
+const Abilities = ( { setRolls, rolls }) => {
 
   const roll = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;

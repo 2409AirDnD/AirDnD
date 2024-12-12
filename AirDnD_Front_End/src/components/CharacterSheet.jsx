@@ -15,6 +15,14 @@ const CharacterSheet = () => {
   const [selectedRace, setSelectedRace] = useState("");
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
+  const [rolls, setRolls] = useState({
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 0,
+    charisma: 0,
+  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,10 +50,10 @@ const CharacterSheet = () => {
         <BasicInfo setSelectedClass={ setSelectedClass } setSelectedRace={ setSelectedRace }
           selectedClass={ selectedClass} selectedRace={ selectedRace } 
           classList={ classList } raceList={ raceList }/>
-        <Abilities />
+        <Abilities setRolls={ setRolls } rolls={ rolls }/>
         <Skills />
         <InitSpeedAC />
-        <HitpointsAndDice selectedClass= { selectedClass } />
+        <HitpointsAndDice selectedClass= { selectedClass } rolls={ rolls } />
         <FeaturesAndProficiencies />
         <Actions />
         <DeathSavesAndExhaustion />
