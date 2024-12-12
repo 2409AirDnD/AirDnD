@@ -413,7 +413,6 @@ header > a:visited {
   z-index: 1;
   margin-top:  7%;
   color: rgb(27, 17, 0);
-  font-size: 70%;
 }
 
 #speed-block {
@@ -488,6 +487,17 @@ header > a:visited {
   z-index: 1;
   color: rgb(27, 17, 0);
   font-size: 70%;
+}
+
+.initspeedac-header {
+  font-size:  70%;
+  left: 23%;
+}
+
+.initspeedac-value {
+  font-size: 500%;
+  top: 20%;
+  right: 15%
 }
 
 #deathsaves-and-exhaustion-block {

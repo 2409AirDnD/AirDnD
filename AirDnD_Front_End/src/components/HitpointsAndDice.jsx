@@ -1,4 +1,4 @@
-const  HitpointsAndDice = ( { selectedClass, rolls } ) => {
+const  HitpointsAndDice = ( { selectedClass, abilityModifiers } ) => {
 
   const determineDice = () => {
     if (selectedClass === "Sorcerer" || selectedClass === "Wizard") {
@@ -15,10 +15,9 @@ const  HitpointsAndDice = ( { selectedClass, rolls } ) => {
     }
   };
 
-
   const determineHitPoints = () => {
-    if (selectedClass && rolls.constitution) {
-    return rolls.constitution + determineDice()[1]
+    if (selectedClass && abilityModifiers.constitution !== undefined) {
+    return abilityModifiers.constitution + determineDice()[1]
     } else {
       return "..."
     }

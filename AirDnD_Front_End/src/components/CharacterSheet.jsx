@@ -50,8 +50,6 @@ const CharacterSheet = () => {
     fetchData();
   }, []);
 
-  console.log(abilityModifiers);
-  
   return (
     <>
       <h1 id="character-sheet-header">Create your character</h1>
@@ -61,8 +59,8 @@ const CharacterSheet = () => {
           classList={ classList } raceList={ raceList }/>
         <Abilities setRolls={ setRolls } rolls={ rolls } setAbilityModifiers={ setAbilityModifiers }/>
         <Skills />
-        <InitSpeedAC />
-        <HitpointsAndDice selectedClass= { selectedClass } rolls={ rolls } />
+        <InitSpeedAC abilityModifiers={ abilityModifiers }/>
+        <HitpointsAndDice selectedClass= { selectedClass } rolls={ rolls } abilityModifiers={ abilityModifiers } />
         <FeaturesAndProficiencies />
         <Actions />
         <DeathSavesAndExhaustion />
