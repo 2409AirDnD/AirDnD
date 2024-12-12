@@ -14,10 +14,10 @@ const Skills = () => {
   }, []);
 
   // Update the proficiency of a skill when a checkbox is clicked
-  //const handleProficiencyChange = (skillId) => {
+  //const handleProficiencyChange = (name) => {
   //setSelectedProficiencies((prevProficiencies) => ({
   //...prevProficiencies,
-  //[skillId]: !prevProficiencies[skillId],
+  //[name]: !prevProficiencies[name],
   //}));
   //};
 
@@ -33,7 +33,7 @@ const Skills = () => {
     <div id="skills-block">
       <h2>Skills</h2>
       {skills.map((skill) => {
-        const { name, ability } = skill; // Assuming each skill has these properties
+        const { name, ability } = skill;
 
         return (
           <div key={name}>
