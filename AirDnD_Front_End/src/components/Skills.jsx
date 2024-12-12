@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // Skills will pass in {abilityModifiers, proficiencyBonus}
-const Skills = () => {
+const Skills = ({ abilityModifiers, setAbilityModifiers }) => {
   const [skills, setSkills] = useState([]);
   //const [selectedProficiencies, setSelectedProficiencies] = useState({});
 

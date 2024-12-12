@@ -67,7 +67,10 @@ const CharacterSheet = () => {
           rolls={rolls}
           setAbilityModifiers={setAbilityModifiers}
         />
-        <Skills />
+        <Skills
+          setAbilityModifiers={setAbilityModifiers}
+          abilityModifiers={abilityModifiers}
+        />
         <InitSpeedAC abilityModifiers={abilityModifiers} />
         <HitpointsAndDice
           selectedClass={selectedClass}
