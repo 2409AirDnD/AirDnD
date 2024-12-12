@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 
-const BasicInfo = () => {
+const BasicInfo = ( { selectedClass, selectedRace, setSelectedClass, setSelectedRace, classList, raceList } ) => {
   // State for form fields
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
-  const [classList, setClassList] = useState([]);
-  const [raceList, setRaceList] = useState([]);
-  const [selectedClass, setSelectedClass] = useState("");
-  const [selectedRace, setSelectedRace] = useState("");
   const [experience, setExperience] = useState(0);
   const [level, setLevel] = useState(1);
   const [image, setImage] = useState(null);
@@ -19,24 +15,6 @@ const BasicInfo = () => {
     wis: 10,
     cha: 10,
   });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const classResponse = await fetch("http://localhost:3000/classes");
-        const classData = await classResponse.json();
-        setClassList(classData);
-
-        const raceResponse = await fetch("http://localhost:3000/races");
-        const raceData = await raceResponse.json();
-        setRaceList(raceData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
