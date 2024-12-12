@@ -16,8 +16,8 @@ const  HitpointsAndDice = ( { selectedClass, abilityModifiers } ) => {
   };
 
   const determineHitPoints = () => {
-    if (selectedClass && abilityModifiers.constitution !== undefined) {
-    return abilityModifiers.constitution + determineDice()[1]
+    if (selectedClass && abilityModifiers.con !== undefined) {
+    return abilityModifiers.con + determineDice()[1]
     } else {
       return "..."
     }
