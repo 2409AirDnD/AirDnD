@@ -10,7 +10,6 @@ import Traits from "./Traits.jsx";
 import Inventory from "./Inventory.jsx";
 import FeaturesAndProficiencies from "./FeaturesAndProficiencies.jsx";
 const CharacterSheet = () => {
-
   const [selectedClass, setSelectedClass] = useState("");
   const [selectedRace, setSelectedRace] = useState("");
   const [classList, setClassList] = useState([]);
@@ -22,7 +21,7 @@ const CharacterSheet = () => {
     intelligence: 0,
     wisdom: 0,
     charisma: 0,
-  })
+  });
   const [abilityModifiers, setAbilityModifiers] = useState({
     strength: 0,
     dexterity: 0,
@@ -30,7 +29,7 @@ const CharacterSheet = () => {
     intelligence: 0,
     wisdom: 0,
     charisma: 0,
-  })
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,13 +53,27 @@ const CharacterSheet = () => {
     <>
       <h1 id="character-sheet-header">Create your character</h1>
       <div id="character-sheet-block">
-        <BasicInfo setSelectedClass={ setSelectedClass } setSelectedRace={ setSelectedRace }
-          selectedClass={ selectedClass} selectedRace={ selectedRace } 
-          classList={ classList } raceList={ raceList }/>
-        <Abilities setRolls={ setRolls } rolls={ rolls } setAbilityModifiers={ setAbilityModifiers }/>
+        <BasicInfo
+          setSelectedClass={setSelectedClass}
+          setSelectedRace={setSelectedRace}
+          selectedClass={selectedClass}
+          selectedRace={selectedRace}
+          classList={classList}
+          raceList={raceList}
+          rolls={rolls}
+        />
+        <Abilities
+          setRolls={setRolls}
+          rolls={rolls}
+          setAbilityModifiers={setAbilityModifiers}
+        />
         <Skills />
-        <InitSpeedAC abilityModifiers={ abilityModifiers }/>
-        <HitpointsAndDice selectedClass= { selectedClass } rolls={ rolls } abilityModifiers={ abilityModifiers } />
+        <InitSpeedAC abilityModifiers={abilityModifiers} />
+        <HitpointsAndDice
+          selectedClass={selectedClass}
+          rolls={rolls}
+          abilityModifiers={abilityModifiers}
+        />
         <FeaturesAndProficiencies />
         <Actions />
         <DeathSavesAndExhaustion />

@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const BasicInfo = ( { selectedClass, selectedRace, setSelectedClass, setSelectedRace, classList, raceList } ) => {
+const BasicInfo = ({
+  selectedClass,
+  selectedRace,
+  setSelectedClass,
+  setSelectedRace,
+  classList,
+  raceList,
+  rolls,
+}) => {
   // State for form fields
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [experience, setExperience] = useState(0);
   const [level, setLevel] = useState(1);
   const [image, setImage] = useState(null);
-  const [abilityScores, setAbilityScores] = useState({
-    str: 10,
-    dex: 10,
-    con: 10,
-    int: 10,
-    wis: 10,
-    cha: 10,
-  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const BasicInfo = ( { selectedClass, selectedRace, setSelectedClass, setSelected
       experience,
       level,
       image,
-      abilityScores,
+      rolls,
     };
     console.log(characterData); // Send this data to your backend to save it
   };
