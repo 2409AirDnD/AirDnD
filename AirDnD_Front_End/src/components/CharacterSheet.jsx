@@ -73,7 +73,10 @@ const CharacterSheet = () => {
           proficiencyBonus={proficiencyBonus}
           abilityModifiers={abilityModifiers}
         />
-        <InitSpeedAC abilityModifiers={abilityModifiers} />
+        <InitSpeedAC
+          abilityModifiers={abilityModifiers}
+          proficiencyBonus={proficiencyBonus}
+        />
         <HitpointsAndDice
           selectedClass={selectedClass}
           rolls={rolls}
