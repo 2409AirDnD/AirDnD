@@ -3,18 +3,19 @@ import { useState } from "react";
 const BasicInfo = ({
   selectedClass,
   selectedRace,
+  setLevel,
   setProficiencyBonus,
   setSelectedClass,
   setSelectedRace,
   classList,
   raceList,
   rolls,
+  level,
 }) => {
   // State for form fields
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [experience, setExperience] = useState(0);
-  const [level, setLevel] = useState(1);
   const [image, setImage] = useState(null);
 
   const handleSubmit = (e) => {
