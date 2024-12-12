@@ -23,6 +23,14 @@ const CharacterSheet = () => {
     wisdom: 0,
     charisma: 0,
   })
+  const [abilityModifiers, setAbilityModifiers] = useState({
+    strength: 0,
+    dexterity: 0,
+    constitution: 0,
+    intelligence: 0,
+    wisdom: 0,
+    charisma: 0,
+  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +50,8 @@ const CharacterSheet = () => {
     fetchData();
   }, []);
 
-
+  console.log(abilityModifiers);
+  
   return (
     <>
       <h1 id="character-sheet-header">Create your character</h1>
@@ -50,7 +59,7 @@ const CharacterSheet = () => {
         <BasicInfo setSelectedClass={ setSelectedClass } setSelectedRace={ setSelectedRace }
           selectedClass={ selectedClass} selectedRace={ selectedRace } 
           classList={ classList } raceList={ raceList }/>
-        <Abilities setRolls={ setRolls } rolls={ rolls }/>
+        <Abilities setRolls={ setRolls } rolls={ rolls } setAbilityModifiers={ setAbilityModifiers }/>
         <Skills />
         <InitSpeedAC />
         <HitpointsAndDice selectedClass= { selectedClass } rolls={ rolls } />
