@@ -14,6 +14,7 @@ const CharacterSheet = () => {
   const [selectedRace, setSelectedRace] = useState("");
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
+  const [speed, setSpeed] = useState(0);
   const [rolls, setRolls] = useState({
     str: 0,
     dex: 0,
@@ -68,7 +69,11 @@ const CharacterSheet = () => {
           setAbilityModifiers={setAbilityModifiers}
         />
         <Skills />
-        <InitSpeedAC abilityModifiers={abilityModifiers} />
+        <InitSpeedAC
+          abilityModifiers={abilityModifiers}
+          selectedRace={selectedRace}
+          setSpeed={setSpeed}
+        />
         <HitpointsAndDice
           selectedClass={selectedClass}
           rolls={rolls}

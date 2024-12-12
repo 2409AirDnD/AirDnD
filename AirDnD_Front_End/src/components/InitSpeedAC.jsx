@@ -1,8 +1,21 @@
-const InitSpeedAC = ( { abilityModifiers } ) => {
+import { useEffect, useState } from "react";
+
+const InitSpeedAC = ( { abilityModifiers, selectedRace, setSpeed } ) => {
 
   const addPlus = (initScore) => {
     return initScore > 0 ? `+${initScore}` : initScore;
   };
+
+  const determineSpeed = () => {
+    if (selectedRace === "Dragonborn" || selectedRace === "Elf" || selectedRace === "Half-Elf"
+      || selectedRace === "Half-Orc" || selectedRace === "Human" || selectedRace === "Tiefling") {
+      return 30;
+    } else if (selectedRace === "Dwarf" || selectedRace === "Gnome" || selectedRace === "Halfling") {
+      return 25;
+    } else {
+      return "..."
+    }
+  }
 
   return (
     <div id="initspeedac-container">
@@ -12,7 +25,8 @@ const InitSpeedAC = ( { abilityModifiers } ) => {
       </div>
 
       <div id="speed-block">
-        <h1>Speed</h1>
+        <h1 className="initspeedac-header">Speed</h1>
+        <h2 className="initspeedac-value">{determineSpeed()}</h2>
       </div>
 
       <div id="ac-block">
