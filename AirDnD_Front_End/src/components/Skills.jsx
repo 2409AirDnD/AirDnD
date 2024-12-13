@@ -36,7 +36,7 @@ const Skills = ({ abilityModifiers, proficiencyBonus }) => {
         const { name, ability } = skill;
 
         return (
-          <div key={name}>
+          <div className="individual-skill" key={name}>
             <input
               type="checkbox"
               id={`skill-${name}`}
@@ -45,9 +45,7 @@ const Skills = ({ abilityModifiers, proficiencyBonus }) => {
             />
             <label htmlFor={`skill-${name}`}>{name}</label>
             <span> (Ability: {ability})</span>
-            <div>
-              <strong>{calculateSkillModifier(ability, name)}</strong>
-            </div>
+            <strong className="skill-score">{calculateSkillModifier(ability, name)}</strong>
           </div>
         );
       })}

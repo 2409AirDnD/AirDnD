@@ -5,7 +5,12 @@ module.exports = router;
 
 router.get("/", async (req, res) => {
   try {
-    const classes = await prisma.class.findMany();
+    const classes = await prisma.class.findMany({
+      include: {
+        possibleSpells: true,
+        features: true,
+      }
+    });
     res.json(classes);
   } catch (error) {
     console.error("Error fetching classes:", error);
