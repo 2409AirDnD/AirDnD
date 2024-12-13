@@ -77,7 +77,7 @@ const FeaturesAndProficiencies = ( { classList, selectedClass, raceList, selecte
 
   return (
     <div id="features-and-Proficiencies-block">
-      <h1>Features & Proficiencies</h1>
+      <h1>Features & Traits</h1>
       <>
         <h4>Features</h4>
         <ul>
