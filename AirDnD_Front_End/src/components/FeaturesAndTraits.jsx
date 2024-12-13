@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const FeaturesAndTraits = ( { classList, selectedClass, raceList, selectedRace } ) => {
+const FeaturesAndTraits = ( { level, classList, selectedClass, raceList, selectedRace } ) => {
   const [levelOneFeatures, setLevelOneFeatures] = useState([]);
   const [levelTwoFeatures, setLevelTwoFeatures] = useState([]);
   const [levelThreeFeatures, setLevelThreeFeatures] = useState([]);
@@ -20,9 +20,6 @@ const FeaturesAndTraits = ( { classList, selectedClass, raceList, selectedRace }
     10: "Warlock",
     11: "Wizard"
   };
-
-  const level = 2 //TAKE THIS OUT - USESTATE FOR LEVEL SHOULD BE MOVED TO CHARACTER SHEET,
-  //THEN SET LEVEL PASSED TO BASIC INFO AND LEVEL PASSED TO THIS COMP. AND OTHERS.
 
   useEffect(() => {
     if (selectedClass) {
