@@ -17,6 +17,10 @@ const CharacterSheet = () => {
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
   const [speed, setSpeed] = useState(0);
+  const [characterName, setCharacterName] = useState("");
+  const [playerName, setPlayerName] = useState("");
+  const [experience, setExperience] = useState(0);
+  const [image, setImage] = useState(null);
   const [rolls, setRolls] = useState({
     str: 0,
     dex: 0,
@@ -67,6 +71,15 @@ const CharacterSheet = () => {
           classList={classList}
           raceList={raceList}
           rolls={rolls}
+          characterName={characterName}
+          playerName={playerName}
+          speed={speed}
+          experience={experience}
+          image={image}
+          setCharacterName={setCharacterName}
+          setPlayerName={setPlayerName}
+          setExperience={setExperience}
+          setImage={setImage}
         />
         <Abilities
           setRolls={setRolls}

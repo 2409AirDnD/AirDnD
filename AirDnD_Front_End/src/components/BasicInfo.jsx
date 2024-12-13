@@ -25,24 +25,35 @@ const BasicInfo = ({
   raceList,
   rolls,
   level,
+  characterName,
+  playerName,
+  speed,
+  experience,
+  image,
+  setCharacterName,
+  setPlayerName,
+  setExperience,
+  setImage
+
 }) => {
-  // State for form fields
-  const [characterName, setCharacterName] = useState("");
-  const [playerName, setPlayerName] = useState("");
-  const [experience, setExperience] = useState(0);
-  const [image, setImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const characterData = {
-      characterName,
-      playerName,
       selectedClass,
       selectedRace,
-      experience,
-      level,
-      image,
+      setProficiencyBonus,
+      setSelectedClass,
+      setSelectedRace,
+      classList,
+      raceList,
       rolls,
+      level,
+      characterName,
+      playerName,
+      speed,
+      experience,
+      image,
     };
     console.log(characterData); // Send this data to your backend to save it
   };
