@@ -11,7 +11,8 @@ const Register = () => {
 
   const register = async (event) => {
   event.preventDefault()
-
+  
+  try{
   const postCreds = await fetch("http://localhost:3000/register", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
@@ -21,12 +22,22 @@ const Register = () => {
       email: email,
       avatar: avatar
     }),
-  })
+  });
+
+  if (!postCreds.ok) {
+    const errorData = await postCreds.json();
+    throw new Error(error.message);
+  }
 
   const responseJSON = await postCreds.json();
   const token = responseJSON.token;
   setToken(token);
+
+}catch(error){
+  console.error("Registration unsuccessful:", error);
+  alert(error.message)
 }
+  };
 
   return (
     <>
