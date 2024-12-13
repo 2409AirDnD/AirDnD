@@ -19,6 +19,7 @@ const CharacterSheet = () => {
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
   const [speed, setSpeed] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [experience, setExperience] = useState(0);
@@ -40,10 +41,10 @@ const CharacterSheet = () => {
     cha: 0,
   });
   const [health, setHealth] = useState({
-  currentHP: 0,       
-  maxHP: 0,        
-  tempHP: 0,
-  })
+    currentHP: 0,
+    maxHP: 0,
+    tempHP: 0,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,7 +99,7 @@ const CharacterSheet = () => {
           proficiencyBonus={proficiencyBonus}
           abilityModifiers={abilityModifiers}
         />
-        <ProficiencyBonus proficiencyBonus={proficiencyBonus}/>
+        <ProficiencyBonus proficiencyBonus={proficiencyBonus} />
         <InitSpeedAC
           abilityModifiers={abilityModifiers}
           proficiencyBonus={proficiencyBonus}
@@ -106,16 +107,35 @@ const CharacterSheet = () => {
           setSpeed={setSpeed}
         />
         <div id="hp-dice-death-saves-and-exhaustion-container">
-        <HitpointsAndDice
-          selectedClass={selectedClass}
-          rolls={rolls}
-          abilityModifiers={abilityModifiers}
-          level={level}
-          setHealth={setHealth}
-        />
-        <DeathSavesAndExhaustion />
+          <HitpointsAndDice
+            selectedClass={selectedClass}
+            rolls={rolls}
+            abilityModifiers={abilityModifiers}
+            level={level}
+            setHealth={setHealth}
+          />
+          <FeaturesAndTraits
+            level={level}
+            classList={classList}
+            selectedClass={selectedClass}
+            raceList={raceList}
+            selectedRace={selectedRace}
+          />
+          <Actions />
+          <DeathSavesAndExhaustion />
+          <Inventory
+            setShowSidebar={setShowSidebar}
+            showSidebar={showSidebar}
+          />
+          <DeathSavesAndExhaustion />
         </div>
-        <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
+        <FeaturesAndTraits
+          level={level}
+          classList={classList}
+          selectedClass={selectedClass}
+          raceList={raceList}
+          selectedRace={selectedRace}
+        />
         <Actions />
         <Inventory />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
