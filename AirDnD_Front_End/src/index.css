@@ -263,6 +263,8 @@ header > a:visited {
   position: relative;
   z-index: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #skills-block::before {
@@ -279,10 +281,28 @@ header > a:visited {
 }
 
 #skills-block > * {
-  padding-left: 30%; /* This padding is for testing purposes only - DELETE */
   position: relative;
   z-index: 1;
   color: rgb(27, 17, 0);
+}
+
+#skills-block > h2 {
+  left: 40%;
+}
+.individual-skill {
+  left: 32%;
+  margin-bottom: 3.3%;
+}
+
+.individual-skill > input {
+  position: relative;
+  right: 20%;
+}
+
+.skill-score {
+  position: absolute;
+  right: 105%;
+  font-size: 110%;
 }
 
 #proficiency-bonus-block {
