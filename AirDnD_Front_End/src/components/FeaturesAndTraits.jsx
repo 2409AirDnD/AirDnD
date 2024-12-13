@@ -73,8 +73,8 @@ const FeaturesAndTraits = ( { level, classList, selectedClass, raceList, selecte
     <div id="features-and-Proficiencies-block">
       <h1>Features & Traits</h1>
       <>
-        <h4>Features</h4>
         <ul>
+        <h4>Features</h4>
           {level === 1 && levelOneFeatures.map((feature, index) => (
             <li key={index}>{feature.name}</li>
           ))}
@@ -105,11 +105,13 @@ const FeaturesAndTraits = ( { level, classList, selectedClass, raceList, selecte
       </>
       <h4>Traits</h4>
       {selectedRaceTraits && (
+      <>
         <ul>
           {selectedRaceTraits.map((trait, index) => (
             <li key={index}>{trait.name}</li>
           ))}
         </ul>
+      </>
       )}
     </div>
   );
