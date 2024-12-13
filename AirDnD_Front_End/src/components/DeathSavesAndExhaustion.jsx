@@ -1,6 +1,6 @@
 function DeathSavesAndExhaustion() {
   return (
-    <>
+    <div id="death-saves-and-exhaustion-container">
       <div id="deathsaves-block">
         <h1>Death Saves</h1>
         <h2>Successes</h2>
@@ -34,7 +34,7 @@ function DeathSavesAndExhaustion() {
         <span>6</span>
         <input type="checkbox" className="exhaustion-checkboxes" />
       </div>
-    </>
+    </div>
   );
 }
 

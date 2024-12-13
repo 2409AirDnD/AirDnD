@@ -1003,3 +1003,7 @@ header > a:visited {
   left: 21%;
   bottom: 15%
 }
+
+#death-saves-and-exhaustion-container {
+  float:right;
+}

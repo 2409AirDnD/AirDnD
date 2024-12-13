@@ -105,6 +105,7 @@ const CharacterSheet = () => {
           selectedRace={selectedRace}
           setSpeed={setSpeed}
         />
+        <div id="hp-dice-death-saves-and-exhaustion-container">
         <HitpointsAndDice
           selectedClass={selectedClass}
           rolls={rolls}
@@ -112,9 +113,10 @@ const CharacterSheet = () => {
           level={level}
           setHealth={setHealth}
         />
+        <DeathSavesAndExhaustion />
+        </div>
         <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
         <Actions />
-        <DeathSavesAndExhaustion />
         <Inventory />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
