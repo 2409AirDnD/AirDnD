@@ -6,9 +6,9 @@ import HitpointsAndDice from "./HitpointsAndDice.jsx";
 import InitSpeedAC from "./InitSpeedAC.jsx";
 import DeathSavesAndExhaustion from "./DeathSavesAndExhaustion.jsx";
 import Actions from "./Actions.jsx";
-import Traits from "./Traits.jsx";
+import Proficiencies from "./Proficiencies.jsx";
 import Inventory from "./Inventory.jsx";
-import FeaturesAndProficiencies from "./FeaturesAndProficiencies.jsx";
+import FeaturesAndTraits from "./FeaturesAndTraits.jsx";
 const CharacterSheet = () => {
   const [level, setLevel] = useState(1);
   const [proficiencyBonus, setProficiencyBonus] = useState("+2");
@@ -89,11 +89,11 @@ const CharacterSheet = () => {
           abilityModifiers={abilityModifiers}
           level={level}
         />
-        <FeaturesAndProficiencies classList={classList} selectedClass={selectedClass}/>
+        <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
         <Actions />
         <DeathSavesAndExhaustion />
         <Inventory />
-        <Traits />
+        <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
   );
