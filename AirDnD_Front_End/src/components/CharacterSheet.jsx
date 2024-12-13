@@ -128,7 +128,6 @@ const CharacterSheet = () => {
           selectedRace={selectedRace}
           />
         <Actions />
-        <Inventory />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
