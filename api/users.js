@@ -17,6 +17,7 @@ router.get("/:id", async (req, res, next) => {
   try {
     const user = await prisma.user.findUniqueOrThrow({
       where: { id: Number(id) },
+      include: { charactersheets: true },
     });
     res.json(user);
   } catch (e) {
