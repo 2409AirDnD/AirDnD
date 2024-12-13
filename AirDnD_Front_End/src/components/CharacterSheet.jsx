@@ -89,11 +89,11 @@ const CharacterSheet = () => {
           abilityModifiers={abilityModifiers}
           level={level}
         />
-        <FeaturesAndProficiencies classList={classList} selectedClass={selectedClass}/>
+        <FeaturesAndProficiencies classList={classList} selectedClass={selectedClass} />
         <Actions />
         <DeathSavesAndExhaustion />
         <Inventory />
-        <Traits />
+        <Traits raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
   );

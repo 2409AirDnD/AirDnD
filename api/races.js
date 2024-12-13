@@ -5,7 +5,11 @@ module.exports = router;
 
 router.get("/", async (req, res) => {
   try {
-    const races = await prisma.race.findMany();
+    const races = await prisma.race.findMany({
+      include: {
+        traits: true,
+      }
+    });
     res.json(races);
   } catch (error) {
     console.error("Error fetching classes:", error);
