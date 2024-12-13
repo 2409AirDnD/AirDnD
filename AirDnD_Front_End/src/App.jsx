@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Account from "./components/Account";
 
 function App() {
+  const [userId, setUserId] = useState(null);
   const [loginToken, setLoginToken] = useState("");
 
   return (
@@ -20,9 +21,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route
           path="/login"
-          element={<Login setLoginToken={setLoginToken} />}
+          element={
+            <Login setLoginToken={setLoginToken} setUserId={setUserId} />
+          }
         />
-        <Route path="/account/:userId" element={<Account />} />
+        <Route path="/account" element={<Account userId={userId} />} />
       </Routes>
     </>
   );

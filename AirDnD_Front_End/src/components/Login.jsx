@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function Login({ setLoginToken }) {
+function Login({ setLoginToken, setUserId }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
+
   const navigate = useNavigate();
 
   const login = async (event) => {
@@ -27,11 +28,12 @@ function Login({ setLoginToken }) {
       const responseJSON = await postCredentials.json();
       const token = responseJSON.token;
       const userId = responseJSON.userId;
+      setUserId(userId);
       console.log(responseJSON);
       setLoginToken(token);
       setLoginSuccess(true);
       setTimeout(() => {
-        navigate(`/account/${userId}`);
+        navigate(`/account`);
       }, 3500);
     } catch (e) {
       alert(e.message || "An error occurred. Please try again.");

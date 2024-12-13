@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-const Account = () => {
+const Account = ({ userId }) => {
   const [userInfo, setUserInfo] = useState([]);
-  const { userId } = useParams();
+  console.log(userId);
   useEffect(() => {
     const getInfo = async () => {
       const response = await fetch(`http://localhost:3000/users/${userId}`);
