@@ -38,6 +38,11 @@ const CharacterSheet = () => {
     wis: 0,
     cha: 0,
   });
+  const [health, setHealth] = useState({
+  currentHP: 0,       
+  maxHP: 0,        
+  tempHP: 0,
+  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +63,7 @@ const CharacterSheet = () => {
   }, []);
 
   console.log(speed)
+  console.log(health)
 
   return (
     <>
@@ -83,6 +89,7 @@ const CharacterSheet = () => {
           setPlayerName={setPlayerName}
           setExperience={setExperience}
           setImage={setImage}
+          health={health}
         />
         <Abilities
           setRolls={setRolls}
@@ -104,6 +111,7 @@ const CharacterSheet = () => {
           rolls={rolls}
           abilityModifiers={abilityModifiers}
           level={level}
+          setHealth={setHealth}
         />
         <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
         <Actions />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const HitpointsAndDice = ({ selectedClass, abilityModifiers, level }) => {
+const HitpointsAndDice = ({ selectedClass, abilityModifiers, level, setHealth }) => {
   const [currentHitPoints, setCurrentHitPoints] = useState(0);
   const [maxHitPoints, setMaxHitPoints] = useState(0);
   const [prevLevel, setPrevLevel] = useState(null);
@@ -64,6 +64,17 @@ const HitpointsAndDice = ({ selectedClass, abilityModifiers, level }) => {
 
     setPrevLevel(level);
   }, [selectedClass, abilityModifiers, level, prevLevel, maxHitPoints]);
+
+  const newHealth = {
+    currentHP: currentHitPoints,
+    maxHP: maxHitPoints,
+    tempHP: 0
+  }
+
+  useEffect(() => {
+
+  setHealth(newHealth);      
+}, [maxHitPoints, currentHitPoints] );
 
   return (
     <div id="hitpoints-and-dice-block">

@@ -33,7 +33,8 @@ const BasicInfo = ({
   setCharacterName,
   setPlayerName,
   setExperience,
-  setImage
+  setImage,
+  health
 
 }) => {
 
@@ -54,6 +55,7 @@ const BasicInfo = ({
       speed,
       experience,
       image,
+      health
     };
     console.log(characterData); // Send this data to your backend to save it
   };
