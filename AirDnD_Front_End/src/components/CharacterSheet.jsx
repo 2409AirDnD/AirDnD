@@ -9,6 +9,7 @@ import Actions from "./Actions.jsx";
 import Proficiencies from "./Proficiencies.jsx";
 import Inventory from "./Inventory.jsx";
 import FeaturesAndTraits from "./FeaturesAndTraits.jsx";
+
 const CharacterSheet = () => {
   const [level, setLevel] = useState(1);
   const [proficiencyBonus, setProficiencyBonus] = useState("+2");
@@ -55,6 +56,8 @@ const CharacterSheet = () => {
 
     fetchData();
   }, []);
+
+  console.log(speed)
 
   return (
     <>

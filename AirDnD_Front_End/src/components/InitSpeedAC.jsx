@@ -17,6 +17,11 @@ const InitSpeedAC = ( { abilityModifiers, selectedRace, setSpeed } ) => {
     }
   }
 
+  useEffect(() => {
+
+    setSpeed(determineSpeed());      
+  }, [determineSpeed()] );
+
   return (
     <div id="initspeedac-container">
       <div id="init-block">
