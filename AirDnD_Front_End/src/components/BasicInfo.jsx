@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const calculateProficiency = (level) => {
+  if (level <= 4) {
+    return +2;
+  } else if (level <= 8) {
+    return +3;
+  } else if (level <= 12) {
+    return +4;
+  } else if (level <= 16) {
+    return +5;
+  } else if (level <= 20) {
+    return +6;
+  }
+};
 
 const BasicInfo = ({
   selectedClass,
   selectedRace,
+  setLevel,
   setProficiencyBonus,
   setSelectedClass,
   setSelectedRace,
   classList,
   raceList,
   rolls,
+  level,
 }) => {
   // State for form fields
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [experience, setExperience] = useState(0);
-  const [level, setLevel] = useState(1);
   const [image, setImage] = useState(null);
 
   const handleSubmit = (e) => {
@@ -32,20 +47,12 @@ const BasicInfo = ({
     console.log(characterData); // Send this data to your backend to save it
   };
 
-  const calculateProficiency = (level) => {
-    if (level <= 4) {
-      setProficiencyBonus(+2);
-    } else if (level <= 8) {
-      setProficiencyBonus(+3);
-    } else if (level <= 12) {
-      setProficiencyBonus(+4);
-    } else if (level <= 16) {
-      setProficiencyBonus(+5);
-    } else if (level <= 20) {
-      setProficiencyBonus(+6);
-    }
-  };
   calculateProficiency(level);
+
+  useEffect(() => {
+    const proficiency = calculateProficiency(level);
+    setProficiencyBonus(proficiency);
+  }, [level, setProficiencyBonus]);
 
   return (
     <div id="basic-info-block">
