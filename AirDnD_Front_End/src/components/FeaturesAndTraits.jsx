@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const FeaturesAndProficiencies = ( { classList, selectedClass, raceList, selectedRace } ) => {
+const FeaturesAndTraits = ( { classList, selectedClass, raceList, selectedRace } ) => {
   const [levelOneFeatures, setLevelOneFeatures] = useState([]);
   const [levelTwoFeatures, setLevelTwoFeatures] = useState([]);
   const [levelThreeFeatures, setLevelThreeFeatures] = useState([]);
@@ -56,8 +56,6 @@ const FeaturesAndProficiencies = ( { classList, selectedClass, raceList, selecte
     8: "Tiefling",
   };
 
-  console.log(raceList);
-
   useEffect(() => {
     if (selectedRace) {
 
@@ -71,7 +69,6 @@ const FeaturesAndProficiencies = ( { classList, selectedClass, raceList, selecte
   }, [raceList, selectedRace]);
 
   useEffect(() => {
-    console.log("Selected race traits updated: ", selectedRaceTraits);
   }, [selectedRaceTraits]);
 
 
@@ -122,4 +119,4 @@ const FeaturesAndProficiencies = ( { classList, selectedClass, raceList, selecte
   
 }
 
-export default FeaturesAndProficiencies;
+export default FeaturesAndTraits;

@@ -6,7 +6,7 @@ import HitpointsAndDice from "./HitpointsAndDice.jsx";
 import InitSpeedAC from "./InitSpeedAC.jsx";
 import DeathSavesAndExhaustion from "./DeathSavesAndExhaustion.jsx";
 import Actions from "./Actions.jsx";
-import Traits from "./Traits.jsx";
+import Proficiencies from "./Proficiencies.jsx";
 import Inventory from "./Inventory.jsx";
 import FeaturesAndTraits from "./FeaturesAndTraits.jsx";
 const CharacterSheet = () => {
@@ -93,7 +93,7 @@ const CharacterSheet = () => {
         <Actions />
         <DeathSavesAndExhaustion />
         <Inventory />
-        <Traits raceList={raceList} selectedRace={selectedRace} />
+        <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
   );
