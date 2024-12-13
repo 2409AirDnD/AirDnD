@@ -17,6 +17,7 @@ const CharacterSheet = () => {
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
   const [speed, setSpeed] = useState(0);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [rolls, setRolls] = useState({
     str: 0,
     dex: 0,
@@ -89,10 +90,16 @@ const CharacterSheet = () => {
           abilityModifiers={abilityModifiers}
           level={level}
         />
-        <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
+        <FeaturesAndTraits
+          level={level}
+          classList={classList}
+          selectedClass={selectedClass}
+          raceList={raceList}
+          selectedRace={selectedRace}
+        />
         <Actions />
         <DeathSavesAndExhaustion />
-        <Inventory />
+        <Inventory setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
