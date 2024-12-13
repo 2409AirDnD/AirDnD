@@ -39,8 +39,16 @@ const BasicInfo = ({
 
 }) => {
 
+  const getClassId = (className, classList) => {
+    const classItem = classList.find((cls) => cls.name === className);
+    return classItem ? classItem.id : null;
+  };
+
 const createCharacter = async (e) => {
   e.preventDefault();
+
+  const classId = getClassId(selectedClass, classList);
+  const raceId = selectedRace.toLowerCase();
 
   const characterData = {
     characterName: characterName,
@@ -50,8 +58,8 @@ const createCharacter = async (e) => {
     speed: speed,
     level: level,
     health: health,
-    classId: 1,
-    raceIndex: "dragonborn",
+    classId: classId,
+    raceIndex: raceId,
     userId: 1,
   } 
 
@@ -75,26 +83,6 @@ const createCharacter = async (e) => {
     alert(e.message || "An error occurred. Please try again.");
   }
 };
-
-  //   const characterData = {
-  //     selectedClass,
-  //     selectedRace,
-  //     setProficiencyBonus,
-  //     setSelectedClass,
-  //     setSelectedRace,
-  //     classList,
-  //     raceList,
-  //     rolls,
-  //     level,
-  //     characterName,
-  //     playerName,
-  //     speed,
-  //     experience,
-  //     image,
-  //     health
-  //   };
-  //   console.log(characterData); // Send this data to your backend to save it
-  // };
 
   calculateProficiency(level);
 
