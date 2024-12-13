@@ -9,6 +9,7 @@ import Actions from "./Actions.jsx";
 import Proficiencies from "./Proficiencies.jsx";
 import Inventory from "./Inventory.jsx";
 import FeaturesAndTraits from "./FeaturesAndTraits.jsx";
+
 const CharacterSheet = () => {
   const [level, setLevel] = useState(1);
   const [proficiencyBonus, setProficiencyBonus] = useState("+2");
@@ -17,6 +18,10 @@ const CharacterSheet = () => {
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
   const [speed, setSpeed] = useState(0);
+  const [characterName, setCharacterName] = useState("");
+  const [playerName, setPlayerName] = useState("");
+  const [experience, setExperience] = useState(0);
+  const [image, setImage] = useState(null);
   const [rolls, setRolls] = useState({
     str: 0,
     dex: 0,
@@ -33,6 +38,11 @@ const CharacterSheet = () => {
     wis: 0,
     cha: 0,
   });
+  const [health, setHealth] = useState({
+  currentHP: 0,       
+  maxHP: 0,        
+  tempHP: 0,
+  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +62,9 @@ const CharacterSheet = () => {
     fetchData();
   }, []);
 
+  console.log(speed)
+  console.log(health)
+
   return (
     <>
       <h1 id="character-sheet-header">Create your character</h1>
@@ -67,6 +80,16 @@ const CharacterSheet = () => {
           classList={classList}
           raceList={raceList}
           rolls={rolls}
+          characterName={characterName}
+          playerName={playerName}
+          speed={speed}
+          experience={experience}
+          image={image}
+          setCharacterName={setCharacterName}
+          setPlayerName={setPlayerName}
+          setExperience={setExperience}
+          setImage={setImage}
+          health={health}
         />
         <Abilities
           setRolls={setRolls}
@@ -88,6 +111,7 @@ const CharacterSheet = () => {
           rolls={rolls}
           abilityModifiers={abilityModifiers}
           level={level}
+          setHealth={setHealth}
         />
         <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
         <Actions />
