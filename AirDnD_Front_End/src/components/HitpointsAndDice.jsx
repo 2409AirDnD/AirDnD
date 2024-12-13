@@ -63,14 +63,7 @@ const HitpointsAndDice = ({ selectedClass, abilityModifiers, level }) => {
     }
 
     setPrevLevel(level);
-  }, [
-    selectedClass,
-    abilityModifiers,
-    level,
-    prevLevel,
-    maxHitPoints,
-    determineDice,
-  ]);
+  }, [selectedClass, abilityModifiers, level, prevLevel, maxHitPoints]);
 
   return (
     <div id="hitpoints-and-dice-block">
