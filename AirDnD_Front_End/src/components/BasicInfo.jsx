@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Inventory from "./Inventory";
 
 const calculateProficiency = (level) => {
   if (level <= 4) {
@@ -25,27 +26,63 @@ const BasicInfo = ({
   raceList,
   rolls,
   level,
-}) => {
-  // State for form fields
-  const [characterName, setCharacterName] = useState("");
-  const [playerName, setPlayerName] = useState("");
-  const [experience, setExperience] = useState(0);
-  const [image, setImage] = useState(null);
+  characterName,
+  playerName,
+  speed,
+  experience,
+  image,
+  setCharacterName,
+  setPlayerName,
+  setExperience,
+  setImage,
+  health
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const characterData = {
-      characterName,
-      playerName,
-      selectedClass,
-      selectedRace,
-      experience,
-      level,
-      image,
-      rolls,
-    };
-    console.log(characterData); // Send this data to your backend to save it
+}) => {
+
+  const getClassId = (className, classList) => {
+    const classItem = classList.find((cls) => cls.name === className);
+    return classItem ? classItem.id : null;
   };
+
+const createCharacter = async (e) => {
+  e.preventDefault();
+
+  const classId = getClassId(selectedClass, classList);
+  const raceId = selectedRace.toLowerCase();
+
+  const characterData = {
+    characterName: characterName,
+    characterAvatar: "https://cdn.pixabay.com/photo/2022/11/23/20/49/barbarian-warrior-7612898_1280.jpg",
+    experience: experience,
+    armorClass: 10,
+    speed: speed,
+    level: level,
+    health: health,
+    classId: classId,
+    raceIndex: raceId,
+    userId: 1,
+  } 
+
+  console.log("Sending character data:", characterData);
+
+  try {
+    const postCharacter = await fetch("http://localhost:3000/characters", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(characterData),
+    });
+
+    if (!postCharacter.ok) {
+      const errorData = await postCharacter.json();
+      throw new Error(errorData.error || "Character Creation Unsuccessful");
+    }
+
+    const character = await postCharacter.json();
+    console.log("Character created:", character);
+  } catch (e) {
+    alert(e.message || "An error occurred. Please try again.");
+  }
+};
 
   calculateProficiency(level);
 
@@ -56,7 +93,7 @@ const BasicInfo = ({
 
   return (
     <div id="basic-info-block">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={createCharacter}>
         <label>
           Character Name:
           <input

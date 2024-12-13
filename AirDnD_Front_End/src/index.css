@@ -1026,3 +1026,52 @@ header > a:visited {
 #home-h4 {
   margin-top: 0.5%;
 }
+
+#proficiency-bonus-block {
+  height: 150px;
+  width: 150px;
+  margin-top: 0.5%;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border: 2px solid rgb(27, 17, 0);
+  border-radius: 12.5%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  float: left;
+}
+
+#proficiency-bonus-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 229, 189);
+  border-radius: 12.5%;
+  z-index: -1;
+  opacity: 75%;
+}
+
+#proficiency-bonus-block> * {
+  position: relative;
+  z-index: 1;
+  color: rgb(27, 17, 0);
+  font-size: 70%;
+}
+
+#proficiency-bonus-block > h1 {
+  left: 8%;
+}
+
+#proficiency-bonus-block > h2 {
+  font-size: 300%;
+  left: 21%;
+  bottom: 15%
+}
+
+#death-saves-and-exhaustion-container {
+  float:right;
+}

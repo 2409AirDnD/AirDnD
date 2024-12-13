@@ -88,7 +88,7 @@ const FeaturesAndTraits = ( { level, classList, selectedClass, raceList, selecte
               ))}
             </>
           )}
-          {level === 3 && (
+          {level >= 3 && (
             <>
               {levelOneFeatures.map((feature, index) => (
                 <li key={index}>{feature.name}</li>
