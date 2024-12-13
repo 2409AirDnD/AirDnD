@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const prisma = require("../prisma");
-require('dotenv').config();
+require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -45,8 +45,9 @@ router.post("/login", async (req, res, next) => {
     const user = await prisma.user.login(username, password);
     console.log(user);
     const token = createToken(user.id);
+    const userId = user.id;
     console.log(token);
-    res.json({ token });
+    res.json({ token, userId });
   } catch (e) {
     next(e);
   }
