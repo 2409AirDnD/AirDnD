@@ -114,30 +114,20 @@ const CharacterSheet = () => {
             level={level}
             setHealth={setHealth}
           />
-          <FeaturesAndTraits
-            level={level}
-            classList={classList}
-            selectedClass={selectedClass}
-            raceList={raceList}
-            selectedRace={selectedRace}
-          />
-          <Actions />
-          <DeathSavesAndExhaustion />
-          <Inventory
-            setShowSidebar={setShowSidebar}
-            showSidebar={showSidebar}
-          />
           <DeathSavesAndExhaustion />
         </div>
+        <Inventory
+          setShowSidebar={setShowSidebar}
+          showSidebar={showSidebar}
+          />
         <FeaturesAndTraits
           level={level}
           classList={classList}
           selectedClass={selectedClass}
           raceList={raceList}
           selectedRace={selectedRace}
-        />
+          />
         <Actions />
-        <Inventory />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
