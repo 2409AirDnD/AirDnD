@@ -9,6 +9,7 @@ import Actions from "./Actions.jsx";
 import Proficiencies from "./Proficiencies.jsx";
 import Inventory from "./Inventory.jsx";
 import FeaturesAndTraits from "./FeaturesAndTraits.jsx";
+import ProficiencyBonus from "./ProficiencyBonus.jsx";
 
 const CharacterSheet = () => {
   const [level, setLevel] = useState(1);
@@ -62,9 +63,6 @@ const CharacterSheet = () => {
     fetchData();
   }, []);
 
-  console.log(speed)
-  console.log(health)
-
   return (
     <>
       <h1 id="character-sheet-header">Create your character</h1>
@@ -100,12 +98,14 @@ const CharacterSheet = () => {
           proficiencyBonus={proficiencyBonus}
           abilityModifiers={abilityModifiers}
         />
+        <ProficiencyBonus proficiencyBonus={proficiencyBonus}/>
         <InitSpeedAC
           abilityModifiers={abilityModifiers}
           proficiencyBonus={proficiencyBonus}
           selectedRace={selectedRace}
           setSpeed={setSpeed}
         />
+        <div id="hp-dice-death-saves-and-exhaustion-container">
         <HitpointsAndDice
           selectedClass={selectedClass}
           rolls={rolls}
@@ -113,9 +113,10 @@ const CharacterSheet = () => {
           level={level}
           setHealth={setHealth}
         />
+        <DeathSavesAndExhaustion />
+        </div>
         <FeaturesAndTraits level={level} classList={classList} selectedClass={selectedClass} raceList={raceList} selectedRace={selectedRace} />
         <Actions />
-        <DeathSavesAndExhaustion />
         <Inventory />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
