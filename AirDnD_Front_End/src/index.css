@@ -660,17 +660,19 @@ header > a:visited {
 }
 
 #inventory-block {
-  height: 150px;
-  width: 150px;
+  height: 300px;
+  min-width: fit-content;
+  width: 600px;
   margin-top: 0.5%;
   display: block;
   background-color: transparent;
   border: 2px solid rgb(27, 17, 0);
   border-radius: 12.5%;
-  position: relative;
-  z-index: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
   overflow: hidden;
-  float: left;
 }
 
 #inventory-block::before {
@@ -683,7 +685,7 @@ header > a:visited {
   background-color: rgb(255, 229, 189);
   border-radius: 12.5%;
   z-index: -1;
-  opacity: 75%;
+  opacity: 0.75;
 }
 
 #inventory-block > * {
@@ -691,6 +693,31 @@ header > a:visited {
   z-index: 1;
   color: rgb(27, 17, 0);
   font-size: 70%;
+  width: 100%;
+}
+
+#inventory-block > h2 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 10%;
+}
+
+#inventory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#inventory-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.inventory-item:hover {
+  background-color: #e0e0e0;
 }
 
 #features-and-Proficiencies-block {
