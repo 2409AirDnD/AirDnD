@@ -9,20 +9,15 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:5173" }));
 
 app.use(require("./api/auth").router);
-
 app.use("/classes", require("./api/classes"));
-
 app.use("/races", require("./api/races"));
-
 app.use("/spells", require("./api/spells"));
-
 app.use("/users", require("./api/users"));
-
 app.use("/campaigns", require("./api/campaigns"));
-
 app.use("/characters", require("./api/characters"));
-
 app.use("/skills", require("./api/skills"));
+app.use("/equipment", require("./api/equipment"));
+
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.originalUrl}`);
   next();
