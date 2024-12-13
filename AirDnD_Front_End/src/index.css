@@ -143,7 +143,7 @@ header > a:visited {
 }
 
 #basic-info-block > * {
-  padding-left: 10%; /* This padding is for testing purposes only - DELETE */
+  padding-left: 10%;
   position: relative;
   z-index: 1;
   color: rgb(27, 17, 0);
