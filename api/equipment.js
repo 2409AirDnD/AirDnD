@@ -14,3 +14,17 @@ router.get("/", async (req, res, next) => {
       .json({ error: "An error occurred while fetching equipment." });
   }
 });
+
+router.get("/:type", async (req, res, next) => {
+  const { type } = req.params;
+  try {
+    const result = await prisma.equipment.findMany({
+      where: {
+        type: type,
+      },
+    });
+    res.status(200).json(result);
+  } catch (e) {
+    next(e);
+  }
+});
