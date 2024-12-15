@@ -41,8 +41,8 @@ const Register = () => {
 
   return (
     <>
-      <h2 id="register-header">Register</h2>
       <form id="register-form" onSubmit={register}>
+      <h2 id="register-header">Register</h2>
       {token ? ( 
         <p id="register-thank-you">Welcome to AirDnD! Please click <Link to="/login">here</Link> to log in and get started.</p>
       ) : (

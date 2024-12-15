@@ -17,7 +17,14 @@ router.get("/:id", async (req, res, next) => {
   try {
     const user = await prisma.user.findUniqueOrThrow({
       where: { id: Number(id) },
-      include: { charactersheets: true },
+      include: { charactersheets: {
+        include: {
+        race: true,
+        class: true,
+        }
+      } 
+    },
+
     });
     res.json(user);
   } catch (e) {

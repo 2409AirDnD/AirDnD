@@ -42,8 +42,8 @@ function Login({ setLoginToken, setUserId }) {
 
   return (
     <>
-      <h2 id="login-header">Login</h2>
       <form id="login-form" onSubmit={login}>
+      <h2 id="login-header">Login</h2>
         {loginSuccess ? (
           <p id="login-thank-you">
             Thank you for logging in. You will be redirected shortly.
