@@ -31,8 +31,8 @@ const Account = ({ userId }) => {
           <img src={userInfo.avatar} alt="User Avatar" height="350" width="250" />
           <h2>{userInfo.email}</h2>
         </div>
+        <h2 id="character-list-header">Characters:</h2>
         <div id="users-characters-block">
-          <h2>Characters:</h2>
         {userInfo.charactersheets && 
           userInfo.charactersheets.map((character) => (
             <section key={character.id} className="single-character-line">
