@@ -1,39 +1,48 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 const Account = ({ userId }) => {
-  const [userInfo, setUserInfo] = useState([]);
-  console.log(userId);
+  const [userInfo, setUserInfo] = useState(null);
+
   useEffect(() => {
     const getInfo = async () => {
-      const response = await fetch(`http://localhost:3000/users/${userId}`);
-      const getUserInfo = await response.json();
-      setUserInfo(getUserInfo);
-
-      //Do a fetch on the auth api route?
-      //useState where useState(false)
-      //have to fetch the token from the auth route, not stored locally
-      //const authResponse = await fetch("http://localhost:3000/auth");
-      //use params to get the id so i don't have to hardcode the userid
+      try {
+        const response = await fetch(`http://localhost:3000/users/${userId}`);
+        const getUserInfo = await response.json();
+        setUserInfo(getUserInfo);
+      } catch (error) {
+        console.error(error);
+      }
     };
     getInfo();
-  }, []);
+  }, [userId]);
+
+  console.log(userInfo);
+
+  if (!userInfo) return <h4>Please wait a moment while we fetch your account data.</h4>
 
   return (
     <>
-      <h1 id="account-header">Welcome back, {userInfo.username}! </h1>
+      <h1 id="account-header">Welcome back, {userInfo.username}!</h1>
       <div id="account-block">
         <h1>Account Information</h1>
-        <h1>
-          {userInfo.id}
-          {userInfo.username}
-          <img src={userInfo.avatar} height="350" width="250" />
-        </h1>
+        <div id="user-details">
+          <h2>{userInfo.username}</h2>
+          <img src={userInfo.avatar} alt="User Avatar" height="350" width="250" />
+          <h2>{userInfo.email}</h2>
+        </div>
+        <h2 id="character-list-header">Characters:</h2>
+        <div id="users-characters-block">
+        {userInfo.charactersheets && 
+          userInfo.charactersheets.map((character) => (
+            <section key={character.id} className="single-character-line">
+              <h4 className="single-character-name">{character.characterName}</h4>
+              <h4>Level {character.level} {character.race[0].name} {character.class[0].name}</h4>
+            </section>))}
+        </div>        
       </div>
     </>
   );
 };
-//they need to be logged into so the users can only see their own info
-//so Auth needs to be passed in so they're Id is passed into the fetch request
-//url so they can only see their own info and not have to be hardcoded
-//authorization bearer token?
+
 export default Account;
