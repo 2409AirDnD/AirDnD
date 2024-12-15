@@ -433,7 +433,7 @@ header > a:visited {
 }
 
 #init-block > * {
-  position: relative;
+  position: absolute;
   z-index: 1;
   margin-top: 7%;
   color: rgb(27, 17, 0);
@@ -469,7 +469,7 @@ header > a:visited {
 }
 
 #speed-block > * {
-  position: relative;
+  position: absolute;
   z-index: 1;
   margin-top: 7%;
   color: rgb(27, 17, 0);
@@ -514,13 +514,19 @@ header > a:visited {
 
 .initspeedac-header {
   font-size: 70%;
-  left: 23%;
+  left: 42%;
 }
 
-.initspeedac-value {
+#init-value {
   font-size: 500%;
-  top: 20%;
-  right: 15%;
+  top: 21%;
+  right: 38%;
+}
+
+#speed-value {
+  font-size: 500%;
+  top: 21%;
+  right: 30%;
 }
 
 #deathsaves-block {
