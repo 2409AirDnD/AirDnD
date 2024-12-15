@@ -74,7 +74,7 @@ const HitpointsAndDice = ({ selectedClass, abilityModifiers, level, setHealth })
   useEffect(() => {
 
   setHealth(newHealth);      
-}, [maxHitPoints, currentHitPoints] );
+  }, [maxHitPoints, currentHitPoints] );
 
   return (
     <div id="hitpoints-and-dice-block">

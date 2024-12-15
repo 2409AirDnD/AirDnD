@@ -13,7 +13,7 @@ const InitSpeedAC = ( { abilityModifiers, selectedRace, setSpeed } ) => {
     } else if (selectedRace === "Dwarf" || selectedRace === "Gnome" || selectedRace === "Halfling") {
       return 25;
     } else {
-      return "..."
+      return ""
     }
   }
 
@@ -22,16 +22,20 @@ const InitSpeedAC = ( { abilityModifiers, selectedRace, setSpeed } ) => {
     setSpeed(determineSpeed());      
   }, [determineSpeed()] );
 
+  const shouldRenderElipse = () => {
+    return Object.values(abilityModifiers).every(modifier => modifier === 0);
+  };
+
   return (
     <div id="initspeedac-container">
       <div id="init-block">
         <h1 className="initspeedac-header">Initiative</h1>
-        <h2 className="initspeedac-value">{addPlus(abilityModifiers.dex)}</h2>
+        <h2 id="init-value">{shouldRenderElipse() ? "" : addPlus(abilityModifiers.dex)}</h2>
       </div>
 
       <div id="speed-block">
         <h1 className="initspeedac-header">Speed</h1>
-        <h2 className="initspeedac-value">{determineSpeed()}</h2>
+        <h2 id = "speed-value">{determineSpeed()}</h2>
       </div>
 
       <div id="ac-block">
