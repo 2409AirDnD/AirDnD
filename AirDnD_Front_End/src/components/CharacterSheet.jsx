@@ -19,7 +19,6 @@ const CharacterSheet = () => {
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
   const [speed, setSpeed] = useState(0);
-  const [showSidebar, setShowSidebar] = useState(false);
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [experience, setExperience] = useState(0);
@@ -121,23 +120,10 @@ const CharacterSheet = () => {
             raceList={raceList}
             selectedRace={selectedRace}
           />
-          <Actions />
-          <DeathSavesAndExhaustion />
-          <Inventory
-            setShowSidebar={setShowSidebar}
-            showSidebar={showSidebar}
-          />
+          <Inventory />
           <DeathSavesAndExhaustion />
         </div>
-        <FeaturesAndTraits
-          level={level}
-          classList={classList}
-          selectedClass={selectedClass}
-          raceList={raceList}
-          selectedRace={selectedRace}
-        />
         <Actions />
-        <Inventory />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>
