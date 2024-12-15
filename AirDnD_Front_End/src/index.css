@@ -74,6 +74,7 @@ header > button {
   left: 90%;
   height: 60%;
   z-index: 2;
+  cursor: pointer;
 }
 
 header > a:visited {
@@ -147,6 +148,11 @@ header > a:visited {
   position: relative;
   z-index: 1;
   color: rgb(27, 17, 0);
+}
+
+#basic-info-block > form > button {
+  margin-top: 2%;
+  cursor: pointer;
 }
 
 #abilities-block {
@@ -964,6 +970,61 @@ header > a:visited {
   color: rgb(27, 17, 0);
 }
 
+#user-details {
+  display: flex;
+  flex-direction: column;
+  right: 30%;
+}
+
+#user-details > img {
+  border: 3px solid rgb(27, 17, 0);
+}
+
+#users-characters-block {
+  width: fit-content;
+  height:fit-content;
+  min-width: 50%;
+  bottom: 48%;
+  left: 30%;
+  margin-left: 3.8%;
+  margin-right: auto;
+  padding-top: 1%;
+  justify-content: center;
+  border: 2px solid rgb(27, 17, 0);
+  position: relative;
+  z-index: 1;
+}
+
+#users-characters-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(68, 46, 7);
+  z-index: -1;
+  opacity: 50%;
+  position: absolute;
+  z-index: -1;
+}
+
+.single-character-line {
+  display: flex;
+  flex-direction: row;
+  background-color: blanchedalmond;
+  border: 2px solid rgb(27, 17, 0);;
+  cursor: pointer;
+}
+
+.single-character-line > * {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.single-character-name {
+  margin-right: 4%;
+}
 #home-header {
   text-align: center;
 }
