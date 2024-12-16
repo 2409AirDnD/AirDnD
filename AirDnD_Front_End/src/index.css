@@ -113,6 +113,12 @@ header > a:visited {
   justify-self: center;
 }
 
+#character-created-message {
+  position: relative;
+  left: 40%;
+  color:#218838;
+}
+
 #basic-info-block {
   height: 300px;
   display: flex;
