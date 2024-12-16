@@ -8,11 +8,19 @@ const Inventory = (equipmentList, setEquipmentList) => {
   const handleItemClick = (item) => {
     alert(`Selected: ${item.name}`);
   };
-
+  const addToInventory = (item) => {
+    setInventory((prevInventory) => [...prevInventory, item]);
+  };
   return (
     <>
       <div id="inventory-block">
         <h2>My Inventory</h2>
+        <button
+          className=".add-equipment-btn"
+          onClick={() => setShowSidebar(true)}
+        >
+          Add Equipment
+        </button>
         <div id="inventory-list">
           {inventory.map((item) => (
             <div
@@ -21,20 +29,22 @@ const Inventory = (equipmentList, setEquipmentList) => {
               onClick={() => handleItemClick(item)}
             >
               <h3>{item.name}</h3>
-              <p>{item.description}</p>
+              {item.description
+                ? item.description.length > 50
+                  ? `${item.description.slice(0, 50)}...`
+                  : item.description
+                : item.armorClass || item.damage}
               <small>Type: {item.type}</small>
             </div>
           ))}
         </div>
-        <button
-          className="add-equipment-btn"
-          onClick={() => setShowSidebar(true)}
-        >
-          Add Equipment
-        </button>
       </div>
       {showSidebar ? (
-        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+        <Sidebar
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
+          addToInventory={addToInventory}
+        />
       ) : null}
     </>
   );
