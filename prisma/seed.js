@@ -180,14 +180,11 @@ async function main() {
     })
   );
 
-  console.log("Seeding class features...");
   for (const feature of classFeatures) {
     await prisma.classFeature.create({
       data: feature,
     });
   }
-
-  console.log("Class features seeded successfully!");
 }
 
 main()
