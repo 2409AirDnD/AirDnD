@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "../sidebar.css";
 
-const Sidebar = ({ showSidebar, setShowSidebar }) => {
+const Sidebar = ({ showSidebar, setShowSidebar, setInventory }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [equipmentList, setEquipmentList] = useState([]);
@@ -46,6 +46,12 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
 
   const closeDescription = () => {
     setSelectedItem(null);
+  };
+
+  const handleAddToInventory = (item) => {
+    setInventory((prevInventory) => [...prevInventory, item]);
+    setSelectedItem(null); // Close item details
+    alert(`${item.name} has been added to your inventory.`);
   };
 
   return (
@@ -120,6 +126,9 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
             <p>Armor Class: {selectedItem.armorClass}</p>
           )}
           {selectedItem.value && <p>Value: {selectedItem.value} gp</p>}
+          <button onClick={() => handleAddToInventory(selectedItem)}>
+            Add to Inventory
+          </button>
         </div>
       )}
     </>

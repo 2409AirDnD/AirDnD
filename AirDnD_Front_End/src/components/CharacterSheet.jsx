@@ -18,6 +18,9 @@ const CharacterSheet = () => {
   const [selectedRace, setSelectedRace] = useState("");
   const [classList, setClassList] = useState([]);
   const [raceList, setRaceList] = useState([]);
+  const [inventory, setInventory] = useState([]);
+  const [AC, setAC] = useState(10);
+  const [actions, setActions] = useState([]);
   const [speed, setSpeed] = useState(0);
   const [characterName, setCharacterName] = useState("");
   const [playerName, setPlayerName] = useState("");
@@ -63,6 +66,20 @@ const CharacterSheet = () => {
     fetchData();
   }, []);
 
+  const addToInventory = (item) => {
+    if (!inventory.some((invItem) => invItem.id === item.id)) {
+      setInventory([...inventory, item]);
+    }
+  };
+
+  const equipItem = (item) => {
+    if (item.type === "Armor") {
+      setAC(item.armorClass);
+    } else if (item.type === "Weapon" && item.damage) {
+      alert(`Weapon equipped: ${item.damage}`);
+    }
+  };
+
   return (
     <>
       <h1 id="character-sheet-header">Create your character</h1>
@@ -104,6 +121,7 @@ const CharacterSheet = () => {
           proficiencyBonus={proficiencyBonus}
           selectedRace={selectedRace}
           setSpeed={setSpeed}
+          ac={AC}
         />
         <div id="hp-dice-death-saves-and-exhaustion-container">
           <HitpointsAndDice
@@ -120,10 +138,15 @@ const CharacterSheet = () => {
             raceList={raceList}
             selectedRace={selectedRace}
           />
-          <Inventory />
+          <Inventory
+            inventory={inventory}
+            setInventory={setInventory}
+            equipItem={equipItem}
+            addToInventory={addToInventory}
+          />
           <DeathSavesAndExhaustion />
         </div>
-        <Actions />
+        <Actions actions={actions} />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
       </div>
     </>

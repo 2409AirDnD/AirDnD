@@ -1,14 +1,16 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 
-const Inventory = (equipmentList, setEquipmentList) => {
+const Inventory = ({ inventory, equipItem, addToInventory }) => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [inventory, setInventory] = useState([]);
 
   const handleItemClick = (item) => {
     alert(`Selected: ${item.name}`);
   };
 
+  const handleEquipItem = (item) => {
+    equipItem(item);
+  };
   return (
     <>
       <div id="inventory-block">
@@ -23,6 +25,7 @@ const Inventory = (equipmentList, setEquipmentList) => {
               <h3>{item.name}</h3>
               <p>{item.description}</p>
               <small>Type: {item.type}</small>
+              <button onClick={() => handleEquipItem(item)}>Equip</button>
             </div>
           ))}
         </div>
@@ -33,9 +36,13 @@ const Inventory = (equipmentList, setEquipmentList) => {
           Add Equipment
         </button>
       </div>
-      {showSidebar ? (
-        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-      ) : null}
+      {showSidebar && (
+        <Sidebar
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
+          addToInventory={addToInventory}
+        />
+      )}
     </>
   );
 };
