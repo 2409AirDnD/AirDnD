@@ -1,14 +1,9 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 
-const sampleItems = [
-  { id: 1, name: "Potion", description: "Heals 20 HP", type: "Healing" },
-  { id: 2, name: "Sword", description: "Deals 10 damage", type: "Weapon" },
-];
-
-const Inventory = () => {
+const Inventory = (equipmentList, setEquipmentList) => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [inventory, setInventory] = useState(sampleItems);
+  const [inventory, setInventory] = useState([]);
 
   const handleItemClick = (item) => {
     alert(`Selected: ${item.name}`);
@@ -31,8 +26,6 @@ const Inventory = () => {
             </div>
           ))}
         </div>
-
-        {/* Add Equipment Button */}
         <button
           className="add-equipment-btn"
           onClick={() => setShowSidebar(true)}
@@ -40,8 +33,6 @@ const Inventory = () => {
           Add Equipment
         </button>
       </div>
-
-      {/* Sidebar Component */}
       {showSidebar ? (
         <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
       ) : null}

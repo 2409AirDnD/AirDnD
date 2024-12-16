@@ -735,23 +735,6 @@ header > a:visited {
   background-color: #e0e0e0;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  width: 300px;
-  height: 100vh;
-  background-color: #fff;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease;
-  padding: 20px;
-  z-index: 9999;
-}
-
-.sidebar.show {
-  right: 0;
-}
-
 .add-equipment-btn {
   position: absolute;
   top: 10px;
@@ -1134,7 +1117,7 @@ header > a:visited {
   opacity: 75%;
 }
 
-#proficiency-bonus-block> * {
+#proficiency-bonus-block > * {
   position: relative;
   z-index: 1;
   color: rgb(27, 17, 0);
@@ -1148,9 +1131,9 @@ header > a:visited {
 #proficiency-bonus-block > h2 {
   font-size: 300%;
   left: 21%;
-  bottom: 15%
+  bottom: 15%;
 }
 
 #death-saves-and-exhaustion-container {
-  float:right;
+  float: right;
 }
