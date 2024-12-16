@@ -879,7 +879,7 @@ header > a:visited {
 }
 
 #register-thank-you {
-  margin-top: 25%;
+  margin-top: 15%;
   font-size: 28px;
 }
 
@@ -940,7 +940,7 @@ header > a:visited {
 }
 
 #login-thank-you {
-  margin-top: 25%;
+  margin-top: 15%;
   font-size: 28px;
 }
 
@@ -993,16 +993,16 @@ header > a:visited {
   border: 3px solid rgb(27, 17, 0);
 }
 
-#character-list-header {
-  bottom: 48%;
+#character-campaign-list-header {
+  bottom: 54%;
   left: 8%;
 }
 
-#users-characters-block {
+#users-characters-campaign-block {
   width: fit-content;
   height:fit-content;
   min-width: 50%;
-  bottom: 48%;
+  bottom: 55%;
   left: 30%;
   margin-left: 3.8%;
   margin-right: auto;
@@ -1013,7 +1013,7 @@ header > a:visited {
   z-index: 1;
 }
 
-#users-characters-block::before {
+#users-characters-campaign-block::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1027,7 +1027,7 @@ header > a:visited {
   z-index: -1;
 }
 
-.single-character-line {
+.single-character-campaign-line {
   display: flex;
   flex-direction: row;
   background-color: blanchedalmond;
@@ -1035,14 +1035,29 @@ header > a:visited {
   cursor: pointer;
 }
 
-.single-character-line > * {
+.single-character-campaign-line > * {
   margin-top: 1%;
   margin-bottom: 1%;
 }
 
-.single-character-name {
+.single-character-campaign-name {
   margin-right: 4%;
 }
+
+#account-block > form {
+  left: 7%;
+  bottom:54%;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+#account-block > form > button {
+position: relative;
+left: 12%;
+margin-top: 1.5%;
+}
+
 #home-header {
   text-align: center;
 }
