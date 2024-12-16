@@ -86,7 +86,7 @@ const Account = ({ userId }) => {
               <h4>Level {character.level} {character.race[0].name} {character.class[0].name}</h4>
             </section>))}
         </div>  
-        <h2 id="character-campaign-list-header">Campaigns that you DM</h2>
+        <h2 id="character-campaign-list-header">Your Created Campaigns:</h2>
         <div id="users-characters-campaign-block">
           {campaigns && 
           campaigns.map((campaign) => (
