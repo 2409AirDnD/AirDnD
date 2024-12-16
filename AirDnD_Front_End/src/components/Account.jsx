@@ -48,7 +48,7 @@ const Account = ({ userId }) => {
           },
           characters: [
             {
-              id: 2
+              id: 1
             }
           ]
         })
