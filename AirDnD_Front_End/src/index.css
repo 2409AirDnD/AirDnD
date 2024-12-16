@@ -699,6 +699,8 @@ header > a:visited {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #inventory-item {
