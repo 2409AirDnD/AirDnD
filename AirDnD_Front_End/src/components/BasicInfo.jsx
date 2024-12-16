@@ -35,7 +35,8 @@ const BasicInfo = ({
   setPlayerName,
   setExperience,
   setImage,
-  health
+  health,
+  setWasCharacterCreated
 
 }) => {
 
@@ -77,8 +78,7 @@ const createCharacter = async (e) => {
       throw new Error(errorData.error || "Character Creation Unsuccessful");
     }
 
-    const character = await postCharacter.json();
-    console.log("Character created:", character);
+    setWasCharacterCreated(true);
   } catch (e) {
     alert(e.message || "An error occurred. Please try again.");
   }

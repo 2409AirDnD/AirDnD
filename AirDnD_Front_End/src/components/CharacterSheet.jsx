@@ -12,6 +12,7 @@ import FeaturesAndTraits from "./FeaturesAndTraits.jsx";
 import ProficiencyBonus from "./ProficiencyBonus.jsx";
 
 const CharacterSheet = () => {
+  const [wasCharacterCreated, setWasCharacterCreated] = useState(false)
   const [level, setLevel] = useState(1);
   const [proficiencyBonus, setProficiencyBonus] = useState("+2");
   const [selectedClass, setSelectedClass] = useState("");
@@ -64,9 +65,12 @@ const CharacterSheet = () => {
   }, []);
 
   return (
+
     <>
       <h1 id="character-sheet-header">Create your character</h1>
       <div id="character-sheet-block">
+      {wasCharacterCreated !== true ?
+      <>
         <BasicInfo
           setLevel={setLevel}
           setProficiencyBonus={setProficiencyBonus}
@@ -88,6 +92,7 @@ const CharacterSheet = () => {
           setExperience={setExperience}
           setImage={setImage}
           health={health}
+          setWasCharacterCreated={setWasCharacterCreated}
         />
         <Abilities
           setRolls={setRolls}
@@ -113,6 +118,8 @@ const CharacterSheet = () => {
             level={level}
             setHealth={setHealth}
           />
+          <DeathSavesAndExhaustion />
+        </div>
           <FeaturesAndTraits
             level={level}
             classList={classList}
@@ -121,10 +128,10 @@ const CharacterSheet = () => {
             selectedRace={selectedRace}
           />
           <Inventory />
-          <DeathSavesAndExhaustion />
-        </div>
         <Actions />
         <Proficiencies raceList={raceList} selectedRace={selectedRace} />
+        </>
+      : <h2 id="character-created-message">Character Created!</h2> }
       </div>
     </>
   );
