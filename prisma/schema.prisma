@@ -27,7 +27,7 @@ model Campaign {
   DM User @relation(fields: [dm_ID], references: [id])
   dm_ID Int
 
-  players Player[]
+  // players Player[]
   characters CharacterSheet[]
 }
 
@@ -37,8 +37,8 @@ model Player {
   player User @relation(fields: [playerId], references: [id])
   playerId Int
   username String
-  campaign Campaign @relation(fields: [campaignId], references: [id])
-  campaignId Int
+  // campaign Campaign @relation(fields: [campaignId], references: [id])
+  // campaignId Int
 
   characters CharacterSheet[]
 }

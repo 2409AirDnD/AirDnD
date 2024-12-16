@@ -31,10 +31,19 @@ router.post("/", async (req, res) => {
       data: {
         name,
         description,
-        DM,
-        players,
-        characters,
-      },
+        DM: {
+          connect: {
+            id: 1
+          }
+        },
+        characters: {
+          connect: [
+            {
+              id: 1
+            }
+          ]
+        }
+      },    
     });
     res.status(201).json(newCampaign);
   } catch (e) {
@@ -42,15 +51,3 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "interal server error " });
   }
 });
-//has to make a campaign token? upon making the request
-//post if they wanna be a player or DM if DM given DM status/token?
-//user will add the player they want added in
-
-//id, name, description, DM user,
-//if the user is DM, it would be true?
-
-//has to make a campaign id, campaign name and
-//campaign description, as user, you will decide if you're a player in the campaign
-//or the dm for that certain campaign.
-//will there be a campaign route/component that will be need to be rendered upon creation, access through character sheet
-//where will the button be
