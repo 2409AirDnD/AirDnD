@@ -15,7 +15,7 @@ router.use(async (req, res, next) => {
   if (!token) return next();
   try {
     const { id } = jwt.verify(token, JWT_SECRET);
-    //might be broken here
+
     const user = await prisma.user.findUniqueOrThrow({
       where: { id },
     });
