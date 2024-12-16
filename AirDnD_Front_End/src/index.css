@@ -690,6 +690,11 @@ header > a:visited {
   height: 10%;
 }
 
+#inventory-block > button {
+  width: fit-content;
+  bottom: 20%;
+}
+
 #inventory-list {
   display: flex;
   flex-direction: column;
@@ -709,7 +714,7 @@ header > a:visited {
 }
 
 .add-equipment-btn {
-  position: absolute;
+  position: sticky;
   top: 10px;
   right: 10px;
   padding: 8px 12px;
