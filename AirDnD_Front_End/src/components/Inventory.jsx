@@ -14,13 +14,15 @@ const Inventory = (equipmentList, setEquipmentList) => {
   return (
     <>
       <div id="inventory-block">
-        <h2>My Inventory</h2>
-        <button
-          className=".add-equipment-btn"
-          onClick={() => setShowSidebar(true)}
-        >
-          Add Equipment
+        <div id="inventory-header-and-button">
+          <h2>My Inventory</h2>
+          <button
+            className=".add-equipment-btn"
+            onClick={() => setShowSidebar(true)}
+            >
+            Add Equipment
         </button>
+        </div>
         <div id="inventory-list">
           {inventory.map((item) => (
             <div

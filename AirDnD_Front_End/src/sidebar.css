@@ -140,6 +140,16 @@
   color: black;
 }
 
+#inventory-header-and-button {
+  position: relative;
+  width: 100%;
+}
+
+#inventory-header-and-button > * {
+  position: relative;
+  left: 43%;
+}
+
 .add-equipment-btn {
   position: absolute;
   top: 10px;
